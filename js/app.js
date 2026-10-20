@@ -358,7 +358,14 @@ class OceanApp {
             boxEl.classList.remove('opened', 'shaking', 'tap-1', 'tap-2');
         }
         const pedestal = document.getElementById('gift-pedestal-trigger');
-        pedestal?.classList.remove('shell-opening-flare');
+        if (pedestal) {
+            pedestal.classList.remove('shell-opening-flare');
+            pedestal.style.pointerEvents = '';
+        }
+        const skipOpenBtn = document.getElementById('btn-instant-open-gift');
+        if (skipOpenBtn) {
+            skipOpenBtn.style.pointerEvents = '';
+        }
 
         const hintEl = document.getElementById('gift-hint-status');
         if (hintEl) {
@@ -535,7 +542,6 @@ class OceanApp {
 
         const handleTapGift = (instant = false) => {
             if (this.giftOpened) {
-                this.goToStage(3);
                 return;
             }
 
@@ -568,6 +574,9 @@ class OceanApp {
                 }
             } else {
                 this.giftOpened = true;
+                if (pedestal) pedestal.style.pointerEvents = 'none';
+                if (skipOpenBtn) skipOpenBtn.style.pointerEvents = 'none';
+
                 window.oceanAudio?.playGiftOpenFanfare();
                 window.oceanFX?.triggerBurst(cx, cy, 110);
                 window.oceanFX?.triggerDiveBubbles();
@@ -585,7 +594,7 @@ class OceanApp {
                 // Chờ hiệu ứng vỏ sò hé mở rồi khởi động chuyến du hành ngân hà
                 setTimeout(() => {
                     this.startCinematicVoyage();
-                }, 520);
+                }, 480);
             }
         };
 
@@ -635,22 +644,26 @@ class OceanApp {
         window.oceanAudio?.playPortalVoyage();
 
         const ctx = warpCanvas.getContext('2d');
-        let width = (warpCanvas.width = window.innerWidth);
-        let height = (warpCanvas.height = window.innerHeight);
+        const w = window.innerWidth || document.documentElement.clientWidth || 1280;
+        const h = window.innerHeight || document.documentElement.clientHeight || 720;
+        let width = (warpCanvas.width = w);
+        let height = (warpCanvas.height = h);
 
         const onResize = () => {
             if (!warpCanvas) return;
-            width = warpCanvas.width = window.innerWidth;
-            height = warpCanvas.height = window.innerHeight;
+            const newW = window.innerWidth || document.documentElement.clientWidth || 1280;
+            const newH = window.innerHeight || document.documentElement.clientHeight || 720;
+            width = warpCanvas.width = newW;
+            height = warpCanvas.height = newH;
         };
         window.addEventListener('resize', onResize);
 
-        // Khởi tạo hàng trăm hạt sao và laser dải ngân hà 3D (Dense Galaxy Warp Tunnel)
-        const numParticles = Math.min(420, Math.floor((width * height) / 2800));
+        // Khởi tạo hàng trăm tia laser và sao ngân hà dày đặc (Dense 3D Galaxy Warp Tunnel)
+        const numParticles = 420;
         const particles = [];
         const colors = [
             '#ffffff', // Sao trắng sáng
-            '#ffffff', 
+            '#e0f2fe',
             '#38bdf8', // Laser photon xanh cyan
             '#7dd3fc', 
             '#67e8f9', 
@@ -659,16 +672,23 @@ class OceanApp {
             '#fbbf24'  // Điểm sáng vàng kim
         ];
 
+        const spawnParticle = (p = {}, randomizeZ = false) => {
+            const angle = Math.random() * Math.PI * 2;
+            // Phân bổ hạt phủ đều toàn màn hình từ tâm ra các góc theo tỉ lệ khung hình
+            const spreadX = (width * 0.58) * (Math.random() * 0.92 + 0.08);
+            const spreadY = (height * 0.58) * (Math.random() * 0.92 + 0.08);
+            p.x = Math.cos(angle) * spreadX;
+            p.y = Math.sin(angle) * spreadY;
+            p.z = randomizeZ ? (Math.random() * 950 + 50) : 1000;
+            p.speed = Math.random() * 20 + 15;
+            p.color = colors[Math.floor(Math.random() * colors.length)];
+            p.size = Math.random() * 2.4 + 1.6;
+            p.sparkle = Math.random() > 0.65;
+            return p;
+        };
+
         for (let i = 0; i < numParticles; i++) {
-            particles.push({
-                x: (Math.random() - 0.5) * width * 3.2,
-                y: (Math.random() - 0.5) * height * 3.2,
-                z: Math.random() * 1200 + 1,
-                speed: Math.random() * 26 + 18,
-                color: colors[Math.floor(Math.random() * colors.length)],
-                size: Math.random() * 2.5 + 1.1,
-                sparkle: Math.random() > 0.8
-            });
+            particles.push(spawnParticle({}, true));
         }
 
         let animFrameId = null;
@@ -770,7 +790,7 @@ class OceanApp {
             }
 
             // Xóa nền với hiệu ứng Motion Blur đuôi sáng ngân hà
-            ctx.fillStyle = teleportTriggered ? 'rgba(2, 6, 20, 0.2)' : 'rgba(2, 6, 20, 0.3)';
+            ctx.fillStyle = teleportTriggered ? 'rgba(2, 6, 20, 0.22)' : 'rgba(2, 6, 20, 0.32)';
             ctx.fillRect(0, 0, width, height);
 
             // Tâm điểm hội tụ của các vì sao (ngay phía trước mũi tàu)
@@ -791,32 +811,43 @@ class OceanApp {
 
             // Gia tốc hạt: Tăng dần đều rồi bùng nổ khi Teleport
             const speedMultiplier = teleportTriggered
-                ? 16 + (progress - 0.74) * 38
-                : (1 + Math.pow(progress, 1.8) * 3.8);
+                ? 16 + (progress - 0.74) * 36
+                : (1.2 + Math.pow(progress, 1.8) * 3.6);
 
             for (let i = 0; i < particles.length; i++) {
                 const p = particles[i];
                 p.z -= p.speed * speedMultiplier;
 
-                if (p.z <= 1) {
-                    p.z = 1200;
-                    p.x = (Math.random() - 0.5) * width * 3.2;
-                    p.y = (Math.random() - 0.5) * height * 3.2;
+                if (p.z <= 12) {
+                    spawnParticle(p, false);
                 }
 
-                const k = 480 / p.z;
+                const k = 460 / p.z;
                 const px = p.x * k + cx;
                 const py = p.y * k + cy;
 
-                const prevZ = p.z + p.speed * speedMultiplier * (teleportTriggered ? 4.8 : 2.6);
-                const prevK = 480 / prevZ;
+                const tailFactor = teleportTriggered ? 4.8 : (2.4 + progress * 2.2);
+                const prevZ = p.z + p.speed * speedMultiplier * tailFactor;
+                const prevK = 460 / prevZ;
                 const prevX = p.x * prevK + cx;
                 const prevY = p.y * prevK + cy;
 
-                if (px >= 0 && px <= width && py >= 0 && py <= height) {
+                // Kiểm tra xem tia sáng có nằm trong vùng nhìn thấy (bao gồm mép màn hình 200px)
+                const inView = (
+                    (px >= -200 && px <= width + 200 && py >= -200 && py <= height + 200) ||
+                    (prevX >= -200 && prevX <= width + 200 && prevY >= -200 && prevY <= height + 200)
+                );
+
+                if (inView) {
                     ctx.save();
+                    const depthFactor = Math.max(0.18, 1 - p.z / 1000);
+                    const lineW = Math.max(1.8, Math.min(6.5, p.size * depthFactor * (teleportTriggered ? 3.0 : 1.8)));
+
                     ctx.strokeStyle = p.color;
-                    ctx.lineWidth = Math.min(5.2, p.size * (1 - p.z / 1200) * (teleportTriggered ? 3.0 : 2.0));
+                    ctx.lineWidth = lineW;
+                    ctx.globalAlpha = Math.min(1, 0.45 + depthFactor * 0.55);
+                    ctx.lineCap = 'round';
+
                     ctx.beginPath();
                     ctx.moveTo(prevX, prevY);
                     ctx.lineTo(px, py);
@@ -824,12 +855,13 @@ class OceanApp {
 
                     // Điểm sáng lấp lánh ở đầu tia laser
                     ctx.fillStyle = '#ffffff';
-                    if (p.sparkle) {
-                        ctx.shadowBlur = 8;
+                    if (p.sparkle || depthFactor > 0.6) {
+                        ctx.shadowBlur = 10;
                         ctx.shadowColor = p.color;
                     }
+                    const dotRadius = Math.max(1.5, Math.min(4.5, p.size * (0.6 + depthFactor * 0.8)));
                     ctx.beginPath();
-                    ctx.arc(px, py, Math.min(3.6, p.size * (1.25 - p.z / 1200)), 0, Math.PI * 2);
+                    ctx.arc(px, py, dotRadius, 0, Math.PI * 2);
                     ctx.fill();
                     ctx.restore();
                 }
