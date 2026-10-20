@@ -269,6 +269,11 @@ class OceanApp {
                 isPinnedOpen = willOpen;
                 widget?.classList.toggle('is-open', willOpen);
                 audio.playClick?.();
+
+                // If music has not started yet, begin playing first track
+                if (audio.audio.paused) {
+                    audio.play();
+                }
             });
         }
 

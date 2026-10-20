@@ -115,6 +115,7 @@ class OceanAudioEngine {
                     .then(() => {
                         this.autoplayPending = false;
                         this.hasInteracted = true;
+                        this.isPlaying = true;
                         console.log('[OceanAudio] Autoplay successfully initiated.');
                     })
                     .catch(() => {
@@ -133,12 +134,17 @@ class OceanAudioEngine {
         }
 
         // Seamless fallback: trigger play on first user tap/click/keypress anywhere on page
-        const unlockUserGesture = () => {
+        const unlockUserGesture = (evt) => {
             if (this.hasInteracted) return;
             this.hasInteracted = true;
             this.initContext();
 
-            if (!this.isPlaying && this.autoplayPending) {
+            // If the user tapped/clicked directly on the music widget,
+            // let the button's own click handler handle play/toggle explicitly.
+            // Do NOT auto-trigger play here to prevent race conditions or double-toggles.
+            const isMusicWidgetClick = evt && evt.target && evt.target.closest && evt.target.closest('#ocean-music-widget');
+
+            if (!isMusicWidgetClick && (!this.isPlaying || this.audio.paused)) {
                 this.play()
                     .then(() => {
                         this.autoplayPending = false;
@@ -146,11 +152,13 @@ class OceanAudioEngine {
                     .catch((err) => {
                         console.warn('[OceanAudio] Gesture unlock play attempt:', err);
                     });
+            } else if (isMusicWidgetClick) {
+                this.autoplayPending = false;
             }
 
             // Remove global unlock listeners once triggered
-            ['pointerdown', 'click', 'keydown', 'touchstart'].forEach((evt) => {
-                window.removeEventListener(evt, unlockUserGesture, true);
+            ['pointerdown', 'click', 'keydown', 'touchstart'].forEach((evtName) => {
+                window.removeEventListener(evtName, unlockUserGesture, true);
             });
         };
 
@@ -230,7 +238,7 @@ class OceanAudioEngine {
     }
 
     togglePlay() {
-        if (this.isPlaying) {
+        if (!this.audio.paused && this.isPlaying) {
             this.pause();
             return false;
         } else {
