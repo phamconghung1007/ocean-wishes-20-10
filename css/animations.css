@@ -1,0 +1,798 @@
+/* ==========================================================================
+   20/10 OCEAN OF WISHES - ANIMATIONS & MARINE ECOSYSTEM MOTION (css/animations.css)
+   ========================================================================== */
+
+@keyframes stageFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(22px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes spinSlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes pulseAura {
+    0%, 100% {
+        transform: scale(0.95);
+        opacity: 0.65;
+    }
+    50% {
+        transform: scale(1.12);
+        opacity: 1;
+    }
+}
+
+@keyframes floatGentle {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+.floating-anim {
+    animation: floatGentle 3.4s ease-in-out infinite;
+}
+
+/* Clamshell Tremble / Vibration when tapped */
+@keyframes shellShake {
+    0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    15% { transform: translate(-5px, -3px) rotate(-7deg) scale(1.05); }
+    35% { transform: translate(5px, -4px) rotate(7deg) scale(1.07); }
+    55% { transform: translate(-4px, -2px) rotate(-5deg) scale(1.05); }
+    75% { transform: translate(4px, -1px) rotate(4deg) scale(1.03); }
+}
+
+.ocean-clamshell.shaking {
+    animation: shellShake 0.52s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+/* Shockwave Ring when Clamshell Opens */
+@keyframes shellShockwave {
+    0% {
+        opacity: 0.95;
+        transform: scale(0.6);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(3.4);
+    }
+}
+
+/* Dive Transition Surge into Underwater World */
+@keyframes diveSurge {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    40% {
+        opacity: 0.88;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.12);
+    }
+}
+
+/* ==========================================================================
+   UNDERWATER SEA CREATURES — VARIED TRAJECTORIES & ARTICULATED LIMB MOTION
+   ========================================================================== */
+
+/* 1. Cá Voi Lưng Gù: Lướt vòng cung uyển chuyển từ trái sang phải */
+@keyframes swimWhaleArcRight {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(-3deg) scale(0.95);
+    }
+    25% {
+        transform: translate3d(34vw, -28px, 0) rotate(2deg) scale(1);
+    }
+    50% {
+        transform: translate3d(68vw, 18px, 0) rotate(4deg) scale(1.03);
+    }
+    75% {
+        transform: translate3d(102vw, -16px, 0) rotate(-2deg) scale(1);
+    }
+    100% {
+        transform: translate3d(138vw, 8px, 0) rotate(-3deg) scale(0.95);
+    }
+}
+
+/* 2. Đàn Cá Heo Đôi: Nhảy sóng lượn nhịp nhàng từ phải sang trái */
+@keyframes swimDolphinLeapLeft {
+    0% {
+        transform: scaleX(-1) translate3d(0, 15px, 0) rotate(-10deg);
+    }
+    20% {
+        transform: scaleX(-1) translate3d(26vw, -42px, 0) rotate(12deg);
+    }
+    40% {
+        transform: scaleX(-1) translate3d(52vw, 22px, 0) rotate(-8deg);
+    }
+    65% {
+        transform: scaleX(-1) translate3d(84vw, -36px, 0) rotate(10deg);
+    }
+    85% {
+        transform: scaleX(-1) translate3d(110vw, 18px, 0) rotate(-6deg);
+    }
+    100% {
+        transform: scaleX(-1) translate3d(136vw, -10px, 0) rotate(4deg);
+    }
+}
+
+/* 3. Cá Thiên Thần Hoàng Đế: Bơi lượn hình sin chéo nhẹ */
+@keyframes swimAngelfishWaveRight {
+    0% {
+        transform: translate3d(0, 20px, 0) rotate(-6deg);
+    }
+    30% {
+        transform: translate3d(38vw, -36px, 0) rotate(7deg);
+    }
+    60% {
+        transform: translate3d(76vw, 24px, 0) rotate(-5deg);
+    }
+    100% {
+        transform: translate3d(128vw, -28px, 0) rotate(4deg);
+    }
+}
+
+/* 4a. Cá Hề Nemo: Lướt theo dòng hải lưu san hô mềm mại */
+@keyframes swimClownfishCurrent {
+    0% {
+        transform: scaleX(-1) translate3d(0, 0, 0) rotate(-2deg);
+    }
+    25% {
+        transform: scaleX(-1) translate3d(32vw, -16px, 0) rotate(3deg);
+    }
+    50% {
+        transform: scaleX(-1) translate3d(64vw, 12px, 0) rotate(-2deg);
+    }
+    75% {
+        transform: scaleX(-1) translate3d(96vw, -10px, 0) rotate(2deg);
+    }
+    100% {
+        transform: scaleX(-1) translate3d(134vw, 4px, 0) rotate(-1deg);
+    }
+}
+
+/* 4b. Cá Blue Tang: Lướt theo tầng nước sâu hơn, lệch nhịp tự nhiên */
+@keyframes swimBlueTangCurrent {
+    0% {
+        transform: scaleX(-1) translate3d(0, 6px, 0) rotate(1deg);
+    }
+    30% {
+        transform: scaleX(-1) translate3d(38vw, 16px, 0) rotate(-2deg);
+    }
+    60% {
+        transform: scaleX(-1) translate3d(76vw, -14px, 0) rotate(3deg);
+    }
+    100% {
+        transform: scaleX(-1) translate3d(136vw, -4px, 0) rotate(-1deg);
+    }
+}
+
+@keyframes swimReefCurrentGlide {
+    0% {
+        transform: scaleX(-1) translate3d(0, 0, 0) rotate(-2deg);
+    }
+    25% {
+        transform: scaleX(-1) translate3d(32vw, -18px, 0) rotate(3deg);
+    }
+    50% {
+        transform: scaleX(-1) translate3d(64vw, 14px, 0) rotate(-2deg);
+    }
+    75% {
+        transform: scaleX(-1) translate3d(96vw, -12px, 0) rotate(2deg);
+    }
+    100% {
+        transform: scaleX(-1) translate3d(134vw, 6px, 0) rotate(-1deg);
+    }
+}
+
+/* 5. Rùa Biển Ngọc Lục Bảo: Bơi chéo nhẹ từ tầng đáy lên tầng giữa */
+@keyframes swimTurtleGlideRight {
+    0% {
+        transform: translate3d(0, 30px, 0) rotate(-8deg);
+    }
+    35% {
+        transform: translate3d(44vw, -15px, 0) rotate(-3deg);
+    }
+    70% {
+        transform: translate3d(88vw, -48px, 0) rotate(4deg);
+    }
+    100% {
+        transform: translate3d(132vw, -20px, 0) rotate(-4deg);
+    }
+}
+
+/* 6. Cá Đuối Manta: Lượn cánh rộng từ phải qua trái */
+@keyframes swimMantaSoarLeft {
+    0% {
+        transform: scaleX(-1) translate3d(0, -10px, 0) rotate(4deg) scale(0.92);
+    }
+    33% {
+        transform: scaleX(-1) translate3d(42vw, 38px, 0) rotate(-5deg) scale(1.04);
+    }
+    66% {
+        transform: scaleX(-1) translate3d(86vw, -18px, 0) rotate(5deg) scale(0.98);
+    }
+    100% {
+        transform: scaleX(-1) translate3d(134vw, 24px, 0) rotate(-3deg) scale(0.94);
+    }
+}
+
+/* 7. Cá Phượng Hoàng Vây Lụa: Lướt đuôi lụa êm ái từ phải qua trái */
+@keyframes swimAnthiasRibbonLeft {
+    0% {
+        transform: scaleX(-1) translate3d(0, 8px, 0) rotate(-3deg);
+    }
+    30% {
+        transform: scaleX(-1) translate3d(40vw, -24px, 0) rotate(4deg);
+    }
+    65% {
+        transform: scaleX(-1) translate3d(82vw, 16px, 0) rotate(-3deg);
+    }
+    100% {
+        transform: scaleX(-1) translate3d(132vw, -10px, 0) rotate(2deg);
+    }
+}
+
+/* 8. Cá Chuồn Cánh Pha Lê: Sải cánh lướt nhanh ngang mặt biển */
+@keyframes swimFlyingFishGlideRight {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(-2deg);
+    }
+    25% {
+        transform: translate3d(36vw, -14px, 0) rotate(2deg);
+    }
+    55% {
+        transform: translate3d(78vw, 10px, 0) rotate(-1deg);
+    }
+    100% {
+        transform: translate3d(136vw, -8px, 0) rotate(1deg);
+    }
+}
+
+/* 9. Đôi Cá Bướm Hoàng Kim: Bơi lượn sóng tầng nước giữa */
+@keyframes swimButterflyPairRight {
+    0% {
+        transform: translate3d(0, 16px, 0) rotate(-4deg);
+    }
+    35% {
+        transform: translate3d(46vw, -22px, 0) rotate(5deg);
+    }
+    70% {
+        transform: translate3d(92vw, 12px, 0) rotate(-3deg);
+    }
+    100% {
+        transform: translate3d(134vw, -6px, 0) rotate(2deg);
+    }
+}
+
+/* 10. Sứa Phát Quang 2 Góc Trên */
+@keyframes jellyfishFloat {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(-4deg) scale(1);
+    }
+    50% {
+        transform: translate3d(10px, -32px, 0) rotate(5deg) scale(1.05, 0.94);
+    }
+}
+
+/* 11 & 12. Cặp Cá Ngựa Đôi 2 Góc Dưới: Nhấp nhô nhịp nhàng theo làn sóng */
+@keyframes seahorseBobbingLeft {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(-4deg);
+    }
+    50% {
+        transform: translate3d(6px, -24px, 0) rotate(5deg);
+    }
+}
+
+@keyframes seahorseBobbingRight {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(4deg);
+    }
+    50% {
+        transform: translate3d(-6px, -22px, 0) rotate(-5deg);
+    }
+}
+
+/* Articulated Fin, Flipper & Tentacle Micro-Animations */
+@keyframes finStroke {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(14deg) scaleY(0.92); }
+}
+
+@keyframes fishTailWag {
+    0%, 100% { transform: scaleX(1) skewY(0deg); }
+    50% { transform: scaleX(0.96) skewY(2.5deg); }
+}
+
+@keyframes turtlePaddleLeft {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-22deg); }
+}
+
+@keyframes turtlePaddleRight {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(22deg); }
+}
+
+@keyframes mantaWingFlap {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.76); }
+}
+
+@keyframes jellyBellContract {
+    0%, 100% { transform: scale(1, 1); }
+    45% { transform: scale(1.08, 0.88); }
+}
+
+@keyframes tentacleSway {
+    0%, 100% { transform: skewX(-5deg); }
+    50% { transform: skewX(6deg); }
+}
+
+.fin-pectoral-anim {
+    transform-origin: 165px 55px;
+    animation: finStroke 3.2s ease-in-out infinite;
+}
+
+.fish-wag-group {
+    transform-origin: center;
+    animation: fishTailWag 0.9s ease-in-out infinite;
+}
+
+.turtle-flipper-left {
+    transform-origin: 90px 36px;
+    animation: turtlePaddleLeft 2.1s ease-in-out infinite;
+}
+
+.turtle-flipper-right {
+    transform-origin: 90px 74px;
+    animation: turtlePaddleRight 2.1s ease-in-out infinite;
+}
+
+.manta-wing-group {
+    transform-origin: center;
+    animation: mantaWingFlap 2.6s ease-in-out infinite;
+}
+
+.jelly-bell-pulse {
+    transform-origin: 50px 35px;
+    animation: jellyBellContract 2.4s ease-in-out infinite;
+}
+
+.tentacle-wave-1 {
+    transform-origin: 50px 55px;
+    animation: tentacleSway 2.4s ease-in-out infinite;
+}
+
+.tentacle-wave-2 {
+    transform-origin: 50px 55px;
+    animation: tentacleSway 2.4s ease-in-out infinite -1.2s;
+}
+
+@keyframes wingFlapFlying {
+    0%, 100% { transform: rotate(0deg) scaleY(1); }
+    50% { transform: rotate(12deg) scaleY(0.85); }
+}
+
+.flying-wing-top {
+    transform-origin: 94px 38px;
+    animation: wingFlapFlying 1.4s ease-in-out infinite;
+}
+
+.flying-wing-bottom {
+    transform-origin: 94px 44px;
+    animation: wingFlapFlying 1.4s ease-in-out infinite -0.7s;
+}
+
+/* Futuristic Underwater Hologram Screen Scanline & Waveform */
+@keyframes holoScan {
+    0% {
+        top: -90px;
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes waveBarPulse {
+    0%, 100% {
+        transform: scaleY(0.5);
+        opacity: 0.55;
+    }
+    50% {
+        transform: scaleY(1.35);
+        opacity: 1;
+    }
+}
+
+/* Floating Emoji Reaction Particle */
+@keyframes floatUpEmoji {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(0.8) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-55px) scale(1.35) rotate(-10deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-110px) scale(0.9) rotate(12deg);
+    }
+}
+
+.floating-reaction-particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 1.6rem;
+    animation: floatUpEmoji 1.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes slideInToast {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ==========================================================================
+   SPACESHIP COSMIC VOYAGE & INSTANT WARP TELEPORT ANIMATIONS
+   ========================================================================== */
+
+/* Lộ trình bay lượn liền mạch 100% không chuyển đổi class đột ngột (Seamless 4.2s Cinematic Timeline) */
+@keyframes shipSeamlessCosmicVoyage {
+    0% {
+        transform: translate(-50%, -50%) translate3d(0, 16vh, 120px) rotate(-3.5deg) scale(1.16);
+        filter: drop-shadow(0 15px 30px rgba(2, 6, 23, 0.9)) drop-shadow(0 0 20px rgba(56, 189, 248, 0.4));
+        opacity: 0;
+    }
+    14% {
+        transform: translate(-50%, -50%) translate3d(0, 4vh, 45px) rotate(1.5deg) scale(1.05);
+        filter: drop-shadow(0 20px 40px rgba(2, 6, 23, 0.9)) drop-shadow(0 0 25px rgba(56, 189, 248, 0.6));
+        opacity: 1;
+    }
+    32% {
+        transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(-1.5deg) scale(1);
+    }
+    48% {
+        /* Lướt êm ái xuyên qua dải ngân hà với độ nghiêng cánh tự nhiên */
+        transform: translate(-50%, -50%) translate3d(1.8vw, -1.8vh, 15px) rotate(2deg) scale(1.02);
+    }
+    64% {
+        transform: translate(-50%, -50%) translate3d(-1.2vw, 1.2vh, -10px) rotate(-1.2deg) scale(0.99);
+    }
+    72% {
+        /* Khóa vị trí tâm ngân hà, chuẩn bị nhảy vọt */
+        transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(0deg) scale(1);
+        filter: drop-shadow(0 0 35px rgba(56, 189, 248, 0.85)) drop-shadow(0 0 50px rgba(244, 114, 182, 0.7));
+    }
+    78% {
+        /* Nhún nhẹ lấy đà nạp xung lực (recoil êm ái) */
+        transform: translate(-50%, -50%) translate3d(0, 14px, 20px) scale(0.94) scaleY(0.92);
+        filter: drop-shadow(0 0 55px rgba(244, 114, 182, 0.95)) drop-shadow(0 0 80px #ffffff);
+    }
+    85% {
+        /* BẮT ĐẦU BỨT PHÁ VẬN TỐC ÁNH SÁNG (WARP DISPLACEMENT) */
+        transform: translate(-50%, -50%) translate3d(0, -35vh, -500px) scale(0.42) scaleY(4.5) scaleX(0.5);
+        filter: drop-shadow(0 0 90px #ffffff) drop-shadow(0 0 130px rgba(56, 189, 248, 1));
+        opacity: 1;
+    }
+    94% {
+        /* DỊCH CHUYỂN TỨC THỜI XUYÊN KHÔNG GIAN BIẾN MẤT VÀO VÔ TẬN */
+        transform: translate(-50%, -50%) translate3d(0, -220vh, -2600px) scale(0.01) scaleY(18) scaleX(0.06);
+        filter: drop-shadow(0 0 160px #ffffff);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(-50%, -50%) translate3d(0, -280vh, -3200px) scale(0) scaleY(0);
+        opacity: 0;
+    }
+}
+
+/* Trường hợp bấm 'Bỏ qua đoạn phim': Bứt tốc dịch chuyển nhanh và mượt */
+@keyframes shipSkipQuickJump {
+    0% {
+        transform: translate(-50%, -50%) scale(1) scaleY(1);
+        opacity: 1;
+    }
+    40% {
+        transform: translate(-50%, -50%) translate3d(0, -50vh, -600px) scale(0.3) scaleY(6) scaleX(0.4);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) translate3d(0, -260vh, -2800px) scale(0.01) scaleY(18) scaleX(0.05);
+        opacity: 0;
+    }
+}
+
+/* Đuôi Luồng Sáng Lượng Tử Tự Nhiên (Không thô như lửa tam giác) */
+@keyframes slipstreamPulse {
+    0% {
+        transform: translateX(-50%) scaleY(0.92);
+        opacity: 0.75;
+    }
+    100% {
+        transform: translateX(-50%) scaleY(1.15);
+        opacity: 0.95;
+        filter: blur(4px) drop-shadow(0 0 14px rgba(56, 189, 248, 0.95));
+    }
+}
+
+/* Lõi phản ứng phản vật chất */
+@keyframes reactorCorePulse {
+    0% {
+        transform: scale(0.85);
+        opacity: 0.75;
+    }
+    100% {
+        transform: scale(1.25);
+        opacity: 1;
+        filter: drop-shadow(0 0 12px #38bdf8) drop-shadow(0 0 20px #f472b6);
+    }
+}
+
+@keyframes beaconBlink {
+    0% {
+        opacity: 0.35;
+        filter: drop-shadow(0 0 2px currentColor);
+    }
+    100% {
+        opacity: 1;
+        filter: drop-shadow(0 0 10px currentColor) drop-shadow(0 0 18px currentColor);
+    }
+}
+
+@keyframes shipHaloSpin {
+    0% {
+        transform: rotate(0deg);
+        opacity: 0.35;
+    }
+    50% {
+        opacity: 0.75;
+    }
+    100% {
+        transform: rotate(360deg);
+        opacity: 0.35;
+    }
+}
+
+/* Sóng Xung Kích Biến Dạng Không Gian Nở Rộng */
+@keyframes warpRingBurst {
+    0% {
+        transform: translate(-50%, -50%) scale(0.08);
+        opacity: 1;
+        border-width: 6px;
+    }
+    45% {
+        opacity: 0.95;
+        border-color: #ffffff;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(5.8);
+        opacity: 0;
+        border-width: 1px;
+    }
+}
+
+/* Vệt Sáng Laser Kéo Dài Toàn Chiều Cao Màn Hình */
+@keyframes teleportBeamFlash {
+    0% {
+        height: 0%;
+        opacity: 0;
+        transform: translate(-50%, -50%) scaleX(1);
+    }
+    25% {
+        height: 140vh;
+        opacity: 1;
+        transform: translate(-50%, -50%) scaleX(2.8);
+    }
+    100% {
+        height: 190vh;
+        opacity: 0;
+        transform: translate(-50%, -50%) scaleX(0.15);
+    }
+}
+
+/* ==========================================================================
+   CINEMATIC OCEAN VOYAGE — HUD, WARP TUNNEL & FLASH TRANSITIONS
+   ========================================================================== */
+
+@keyframes cinemaFadeIn {
+    0% {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+    100% {
+        opacity: 1;
+        backdrop-filter: blur(8px);
+    }
+}
+
+@keyframes cinemaBarSlideTop {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes cinemaBarSlideBottom {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes cinemaRecBlink {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.25;
+        transform: scale(0.85);
+    }
+}
+
+@keyframes causticWaveDrift {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: 0.28;
+    }
+    50% {
+        transform: translate3d(2%, -3%, 0) scale(1.08);
+        opacity: 0.45;
+    }
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: 0.28;
+    }
+}
+
+@keyframes cinemaWhalePass {
+    0% {
+        transform: translate3d(-35vw, 15vh, 0) scale(0.65);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.35;
+    }
+    75% {
+        opacity: 0.32;
+    }
+    100% {
+        transform: translate3d(125vw, -5vh, 0) scale(1.1);
+        opacity: 0;
+    }
+}
+
+@keyframes cinemaFlashBurst {
+    0% {
+        opacity: 0;
+        transform: scale(0.6);
+    }
+    35% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.6);
+    }
+}
+
+/* ==========================================================================
+   STAGE 3: HOLOGRAM LASER HEART INAUGURATION DRAWING
+   ========================================================================== */
+
+@keyframes drawHoloHeartPath {
+    0% {
+        stroke-dashoffset: 200;
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes drawHoloWing {
+    0% {
+        stroke-dashoffset: 80;
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        opacity: 0.85;
+    }
+}
+
+@keyframes holoHeartPulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px rgba(255, 107, 157, 0.65));
+    }
+    50% {
+        transform: scale(1.06);
+        filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.85)) drop-shadow(0 0 26px rgba(255, 107, 157, 0.95));
+    }
+}
+
+/* ==========================================================================
+   OCEAN MUSIC CONTROLLER ANIMATIONS
+   ========================================================================== */
+@keyframes spinVinyl {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes eqBarBounce {
+    0% { height: 4px; }
+    50% { height: 16px; }
+    100% { height: 6px; }
+}
+
+@keyframes eqMiniBounce {
+    0% { height: 3px; }
+    50% { height: 13px; }
+    100% { height: 5px; }
+}
+
+@keyframes rotatingIconSlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes musicPillGlowPulse {
+    0%, 100% {
+        box-shadow: 0 0 12px rgba(14, 165, 233, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        border-color: rgba(56, 189, 248, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 22px rgba(14, 165, 233, 0.6), 0 0 14px rgba(244, 114, 182, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        border-color: rgba(56, 189, 248, 0.7);
+    }
+}
+
+

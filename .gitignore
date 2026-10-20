@@ -1,0 +1,20 @@
+# Agent and AI assistant skills / temporary artifacts
+agent-skills/
+.claude/
+.gemini/
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Local database & Environment variables
+.env
+.env.local
+data/
+*.log
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

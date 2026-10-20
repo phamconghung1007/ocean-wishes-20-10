@@ -1,0 +1,2114 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Không tiết lộ 20/10 ngay từ tiêu đề lúc mới vào để giữ sự bất ngờ -->
+    <title>Một Điều Nhỏ Dành Cho Cậu 🌊</title>
+
+    <!-- Google Fonts: Be Vietnam Pro, Playfair Display, Dancing Script, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Dancing+Script:wght@600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Master Stylesheets -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/animations.css" />
+  </head>
+
+  <body>
+    <!-- Bioluminescent Ocean & Marine Life Interactive Canvas -->
+    <canvas id="ocean-canvas"></canvas>
+
+    <!-- Dive Transition Curtain (Triggered when Clamshell Opens) -->
+    <div
+      id="ocean-dive-overlay"
+      class="ocean-dive-overlay"
+      aria-hidden="true"
+    ></div>
+
+    <!-- ==================================================================
+         CINEMATIC OCEAN VOYAGE (THƯỚC PHIM LẶN VÀO THẾ GIỚI BÍ MẬT 20/10)
+         ================================================================== -->
+    <div
+      id="deep-sea-voyage-cinema"
+      class="cinema-voyage-container"
+      aria-hidden="true"
+    >
+      <!-- 2 Dải Đen Điện Ảnh 2.39:1 Trên & Dưới -->
+      <div class="cinema-letterbox-bar bar-top">
+        <div class="cinema-hud-left">
+          <span class="rec-dot"></span>
+          <span class="hud-label"
+            >TÀU VŨ TRỤ KHỞI HÀNH // HYPERSPACE WARP VOYAGE</span
+          >
+        </div>
+        <div class="cinema-hud-right">
+          <span class="hud-tag">ĐIỂM ĐẾN: THẾ GIỚI KỲ DIỆU 20/10</span>
+          <span id="cinema-depth-ticker" class="depth-counter"
+            >WARP SPEED: 8.5</span
+          >
+        </div>
+      </div>
+
+      <!-- 3D Warp Dive Hyperspace Canvas (Tia Bắn Xuyên Ngân Hà) -->
+      <canvas id="cinema-warp-canvas" class="cinema-warp-canvas"></canvas>
+
+      <!-- CON TÀU VŨ TRỤ THÁM HIỂM LƯỢNG TỬ (QUANTUM INTERSTELLAR EXPLORER) -->
+      <div
+        id="cinema-spaceship-rig"
+        class="cinema-spaceship-rig"
+        aria-hidden="true"
+      >
+        <!-- Đuôi Luồng Sáng Lượng Tử Không Gian (Quantum Slipstream Beams - Không dùng lửa tam giác thô) -->
+        <div class="ship-quantum-slipstream slipstream-left"></div>
+        <div class="ship-quantum-slipstream slipstream-main"></div>
+        <div class="ship-quantum-slipstream slipstream-right"></div>
+
+        <!-- Vector Chiến Hạm Khí Động Học Đột Phá Không Thời Gian -->
+        <svg class="cinema-spaceship-svg" viewBox="0 0 320 220" fill="none">
+          <defs>
+            <!-- Vỏ Giáp Hợp Kim Titanium Dạ Quang -->
+            <linearGradient
+              id="shipArmorGrad"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="25%" stop-color="#bae6fd" />
+              <stop offset="60%" stop-color="#0284c7" />
+              <stop offset="100%" stop-color="#082f49" />
+            </linearGradient>
+            <!-- Cánh Vector Composite Siêu Nhẹ -->
+            <linearGradient
+              id="shipWingArmorGrad"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop offset="0%" stop-color="#38bdf8" />
+              <stop offset="45%" stop-color="#0369a1" />
+              <stop offset="100%" stop-color="#021427" />
+            </linearGradient>
+            <!-- Buồng Lái Quang Học Pha Lê -->
+            <linearGradient
+              id="quantumCanopyGrad"
+              x1="0%"
+              y1="0%"
+              x2="0%"
+              y2="100%"
+            >
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="35%" stop-color="#67e8f9" />
+              <stop offset="70%" stop-color="#06b6d4" />
+              <stop offset="100%" stop-color="#0c4a6e" />
+            </linearGradient>
+            <!-- Lõi Phản Vật Chất Lượng Tử -->
+            <radialGradient id="reactorCoreGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="40%" stop-color="#38bdf8" />
+              <stop offset="75%" stop-color="#c084fc" />
+              <stop offset="100%" stop-color="transparent" />
+            </radialGradient>
+            <!-- Hiệu Ứng Hào Quang Ion Siêu Thực -->
+            <filter
+              id="ionEmitterGlow"
+              x="-30%"
+              y="-30%"
+              width="160%"
+              height="160%"
+            >
+              <feGaussianBlur stdDeviation="5" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- Cụm Cánh Vươn Khí Động Học & Ống Gia Tốc Siêu Không Gian -->
+          <g class="ship-wings-assembly">
+            <!-- Cánh Trái (Left Wing) -->
+            <path
+              d="M110 115 L24 162 L42 132 L112 92 Z"
+              fill="url(#shipWingArmorGrad)"
+              stroke="rgba(125,211,252,0.7)"
+              stroke-width="1.4"
+            />
+            <path
+              d="M24 162 L110 115"
+              stroke="#38bdf8"
+              stroke-width="1.8"
+              filter="url(#ionEmitterGlow)"
+            />
+            <circle
+              cx="26"
+              cy="160"
+              r="3"
+              fill="#38bdf8"
+              class="wing-nav-beacon beacon-cyan"
+            />
+
+            <!-- Cánh Phải (Right Wing) -->
+            <path
+              d="M210 115 L296 162 L278 132 L208 92 Z"
+              fill="url(#shipWingArmorGrad)"
+              stroke="rgba(125,211,252,0.7)"
+              stroke-width="1.4"
+            />
+            <path
+              d="M296 162 L210 115"
+              stroke="#f472b6"
+              stroke-width="1.8"
+              filter="url(#ionEmitterGlow)"
+            />
+            <circle
+              cx="294"
+              cy="160"
+              r="3"
+              fill="#f472b6"
+              class="wing-nav-beacon beacon-pink"
+            />
+          </g>
+
+          <!-- Thân Tàu Chính Dạng Mũi Tên Stealth Thần Tốc -->
+          <g class="ship-hull-assembly">
+            <path
+              d="M160 18 L195 85 L204 146 L182 165 L160 156 L138 165 L116 146 L125 85 Z"
+              fill="url(#shipArmorGrad)"
+              stroke="rgba(255,255,255,0.85)"
+              stroke-width="1.6"
+            />
+            <!-- Đường Gân Dẫn Năng Lượng Lượng Tử -->
+            <line
+              x1="160"
+              y1="22"
+              x2="160"
+              y2="152"
+              stroke="#ffffff"
+              stroke-width="1.4"
+              opacity="0.9"
+            />
+            <line
+              x1="142"
+              y1="88"
+              x2="134"
+              y2="142"
+              stroke="rgba(56, 189, 248, 0.75)"
+              stroke-width="1.2"
+            />
+            <line
+              x1="178"
+              y1="88"
+              x2="186"
+              y2="142"
+              stroke="rgba(56, 189, 248, 0.75)"
+              stroke-width="1.2"
+            />
+
+            <!-- Buồng Lái Lăng Kính Quang Học (Prismatic Cockpit) -->
+            <polygon
+              points="160,42 174,78 160,98 146,78"
+              fill="url(#quantumCanopyGrad)"
+              stroke="#ffffff"
+              stroke-width="1.5"
+              filter="url(#ionEmitterGlow)"
+            />
+            <ellipse
+              cx="160"
+              cy="62"
+              rx="4"
+              ry="14"
+              fill="#ffffff"
+              opacity="0.75"
+            />
+
+            <!-- Lõi Phản Ứng Điểm Kỳ Dị (Singularity Reactor Core) -->
+            <circle
+              cx="160"
+              cy="128"
+              r="10"
+              fill="url(#reactorCoreGrad)"
+              filter="url(#ionEmitterGlow)"
+              class="ship-reactor-core"
+            />
+            <circle
+              cx="160"
+              cy="128"
+              r="15"
+              stroke="rgba(56, 189, 248, 0.6)"
+              stroke-width="1"
+              stroke-dasharray="3 3"
+              fill="none"
+              class="ship-reactor-orbit"
+            />
+          </g>
+
+          <!-- Miệng Xả Động Cơ Ion (Lăng Kính Plasma Quang Học, Không Dùng Lửa Phọt) -->
+          <g class="ship-ion-ports">
+            <!-- Động cơ trung tâm -->
+            <ellipse
+              cx="160"
+              cy="158"
+              rx="12"
+              ry="4"
+              fill="#0284c7"
+              stroke="#38bdf8"
+              stroke-width="1.5"
+            />
+            <ellipse
+              cx="160"
+              cy="158"
+              rx="8"
+              ry="2.5"
+              fill="#ffffff"
+              filter="url(#ionEmitterGlow)"
+              class="ion-lens-center"
+            />
+            <!-- Động cơ mạn trái -->
+            <ellipse
+              cx="132"
+              cy="158"
+              rx="8"
+              ry="3"
+              fill="#0369a1"
+              stroke="#38bdf8"
+              stroke-width="1"
+            />
+            <ellipse
+              cx="132"
+              cy="158"
+              rx="5"
+              ry="1.8"
+              fill="#67e8f9"
+              filter="url(#ionEmitterGlow)"
+              class="ion-lens-left"
+            />
+            <!-- Động cơ mạn phải -->
+            <ellipse
+              cx="188"
+              cy="158"
+              rx="8"
+              ry="3"
+              fill="#0369a1"
+              stroke="#38bdf8"
+              stroke-width="1"
+            />
+            <ellipse
+              cx="188"
+              cy="158"
+              rx="5"
+              ry="1.8"
+              fill="#67e8f9"
+              filter="url(#ionEmitterGlow)"
+              class="ion-lens-right"
+            />
+          </g>
+        </svg>
+      </div>
+
+      <!-- Vòng Sóng Xung Kích Biến Dạng Không Gian (Warp Shockwave Ring) -->
+      <div
+        id="cinema-warp-ring"
+        class="cinema-warp-ring"
+        aria-hidden="true"
+      ></div>
+
+      <!-- Tia Sáng Teleport Vượt Thời Không Khi Tàu Nhảy Vọt Tức Thì -->
+      <div
+        id="cinema-teleport-beam"
+        class="cinema-teleport-beam"
+        aria-hidden="true"
+      ></div>
+
+      <!-- Lớp Môi Trường 3D: Ánh sáng Caustic & Sóng Ngân Hà -->
+      <div class="cinema-environment-layer">
+        <div class="cinema-light-caustic"></div>
+        <div class="cinema-vortex-portal"></div>
+      </div>
+
+      <!-- Khung Phụ Đề Điện Ảnh Kể Chuyện (Không có thanh chạy) -->
+      <div class="cinema-caption-stage">
+        <div class="cinema-caption-box">
+          <p id="cinema-caption-text" class="cinema-caption-text">
+            Chiến hạm thám hiểm khởi hành, kích hoạt động cơ lượng tử...
+          </p>
+        </div>
+      </div>
+
+      <div class="cinema-letterbox-bar bar-bottom">
+        <div class="cinema-footer-brand">
+          <i class="fa-solid fa-water"></i>
+          <span
+            >HẢI TRÌNH DÀNH RIÊNG CHO
+            <strong class="dynamic-user-name">CẬU</strong></span
+          >
+        </div>
+        <button
+          type="button"
+          id="btn-skip-cinema"
+          class="btn-skip-cinema"
+          aria-label="Bỏ qua đoạn phim"
+        >
+          <span>Bỏ qua đoạn phim</span>
+          <i class="fa-solid fa-forward-step"></i>
+        </button>
+      </div>
+
+      <!-- Chớp sáng chuyển cảnh nở ra khi chạm đáy đại dương -->
+      <div
+        id="cinema-flash-burst"
+        class="cinema-flash-burst"
+        aria-hidden="true"
+      ></div>
+    </div>
+
+    <!-- Subtle Layered Ocean Waves at Bottom of Screen -->
+    <div class="ocean-waves-bg" aria-hidden="true">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path
+          fill="rgba(14, 165, 233, 0.12)"
+          d="M0,192L60,186.7C120,181,240,171,360,181.3C480,192,600,224,720,218.7C840,213,960,171,1080,160C1200,149,1320,171,1380,181.3L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+        ></path>
+        <path
+          fill="rgba(56, 189, 248, 0.09)"
+          d="M0,256L80,240C160,224,320,192,480,197.3C640,203,800,245,960,250.7C1120,256,1280,224,1360,208L1440,192L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+        ></path>
+      </svg>
+    </div>
+
+    <!-- ======================================================================
+         MINIMAL FLOATING TOP BAR (NO STEP SPOILERS)
+         ====================================================================== -->
+    <header class="top-hud">
+      <div class="brand-minimal">
+        <span>🌊 Gió Biển Nhắn Gửi</span>
+      </div>
+
+      <div class="hud-actions">
+        <button
+          type="button"
+          id="btn-toggle-theme"
+          class="icon-btn"
+          title="Đổi sắc thái sóng biển"
+          aria-label="Đổi sắc thái sóng biển"
+        >
+          <i class="fa-solid fa-water"></i>
+        </button>
+
+        <!-- Ocean Music Player Controller with Hover/Click Popover -->
+        <div class="ocean-music-widget" id="ocean-music-widget">
+          <!-- Main Interactive Pill Button -->
+          <div
+            id="music-pill-btn"
+            class="music-pill-btn"
+            role="button"
+            tabindex="0"
+            title="Danh sách phát nhạc (Click hoặc di chuột để chọn bài)"
+            aria-label="Mở danh sách bài hát và điều khiển âm nhạc"
+          >
+            <!-- Spinning Vinyl Disc Icon -->
+            <span class="music-disc-icon" id="music-disc-icon">
+              <i class="fa-solid fa-compact-disc"></i>
+            </span>
+
+            <!-- Animated Equalizer Bars -->
+            <span
+              class="music-equalizer-bars"
+              id="music-equalizer-bars"
+              aria-hidden="true"
+            >
+              <span class="eq-bar bar-1"></span>
+              <span class="eq-bar bar-2"></span>
+              <span class="eq-bar bar-3"></span>
+              <span class="eq-bar bar-4"></span>
+            </span>
+
+            <!-- Current Song Title (Clean Song Title Only) -->
+            <span class="music-now-title" id="music-current-title"
+              >Có Chút Ngọt Ngào</span
+            >
+
+            <!-- Quick Play/Pause Action Button -->
+            <button
+              type="button"
+              class="music-pill-playpause"
+              id="music-quick-playpause"
+              title="Phát / Tạm dừng"
+              aria-label="Phát hoặc tạm dừng nhạc"
+            >
+              <i class="fa-solid fa-play" id="music-quick-icon"></i>
+            </button>
+
+            <!-- Dropdown Chevron Indicator -->
+            <i
+              class="fa-solid fa-chevron-down music-chevron"
+              id="music-chevron-icon"
+            ></i>
+          </div>
+
+          <!-- Floating Ocean Playlist Popover -->
+          <div
+            class="music-playlist-popover"
+            id="music-playlist-popover"
+            role="region"
+            aria-label="Danh sách bài hát"
+          >
+            <!-- Popover Header -->
+            <div class="popover-header">
+              <div class="popover-header-title">
+                <i class="fa-solid fa-headphones-simple"></i>
+                <span>GIAI ĐIỆU ĐẠI DƯƠNG</span>
+              </div>
+              <span class="playlist-badge" id="playlist-track-badge"
+                >1 / 5</span
+              >
+            </div>
+
+            <!-- Playback Control Center -->
+            <div class="popover-controls">
+              <button
+                type="button"
+                class="ctrl-btn"
+                id="btn-music-prev"
+                title="Bài trước"
+                aria-label="Bài trước"
+              >
+                <i class="fa-solid fa-backward-step"></i>
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn ctrl-play-main"
+                id="btn-music-play"
+                title="Phát / Tạm dừng"
+                aria-label="Phát hoặc tạm dừng"
+              >
+                <i class="fa-solid fa-play" id="popover-play-icon"></i>
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn"
+                id="btn-music-next"
+                title="Bài tiếp theo"
+                aria-label="Bài tiếp theo"
+              >
+                <i class="fa-solid fa-forward-step"></i>
+              </button>
+            </div>
+
+            <!-- Progress Bar & Time Tracker -->
+            <div class="popover-progress-wrap">
+              <div
+                class="progress-bar-bg"
+                id="music-progress-bar"
+                title="Tua nhạc"
+              >
+                <div class="progress-bar-fill" id="music-progress-fill"></div>
+              </div>
+              <div class="progress-time-row">
+                <span id="music-curr-time">0:00</span>
+                <span id="music-total-time">--:--</span>
+              </div>
+            </div>
+
+            <!-- 5 Tracks Playlist List -->
+            <div class="playlist-tracks-list" id="playlist-tracks-list">
+              <div class="playlist-track-item active" data-index="0">
+                <div class="track-left">
+                  <span class="track-number">01</span>
+                  <span class="track-equalizer-mini"
+                    ><span></span><span></span><span></span
+                  ></span>
+                  <div class="track-info">
+                    <div class="track-title">Có Chút Ngọt Ngào</div>
+                  </div>
+                </div>
+                <div class="track-right">
+                  <span class="track-status-pill">Đang phát</span>
+                </div>
+              </div>
+              <div class="playlist-track-item" data-index="1">
+                <div class="track-left">
+                  <span class="track-number">02</span>
+                  <span class="track-equalizer-mini"
+                    ><span></span><span></span><span></span
+                  ></span>
+                  <div class="track-info">
+                    <div class="track-title">Off My Face</div>
+                  </div>
+                </div>
+                <div class="track-right">
+                  <i class="fa-solid fa-play track-icon-play"></i>
+                </div>
+              </div>
+              <div class="playlist-track-item" data-index="2">
+                <div class="track-left">
+                  <span class="track-number">03</span>
+                  <span class="track-equalizer-mini"
+                    ><span></span><span></span><span></span
+                  ></span>
+                  <div class="track-info">
+                    <div class="track-title">Chờ Chút...</div>
+                  </div>
+                </div>
+                <div class="track-right">
+                  <i class="fa-solid fa-play track-icon-play"></i>
+                </div>
+              </div>
+              <div class="playlist-track-item" data-index="3">
+                <div class="track-left">
+                  <span class="track-number">04</span>
+                  <span class="track-equalizer-mini"
+                    ><span></span><span></span><span></span
+                  ></span>
+                  <div class="track-info">
+                    <div class="track-title">好きだから (Suki Dakara)</div>
+                  </div>
+                </div>
+                <div class="track-right">
+                  <i class="fa-solid fa-play track-icon-play"></i>
+                </div>
+              </div>
+              <div class="playlist-track-item" data-index="4">
+                <div class="track-left">
+                  <span class="track-number">05</span>
+                  <span class="track-equalizer-mini"
+                    ><span></span><span></span><span></span
+                  ></span>
+                  <div class="track-info">
+                    <div class="track-title">Đoạn Kết Cuối</div>
+                  </div>
+                </div>
+                <div class="track-right">
+                  <i class="fa-solid fa-play track-icon-play"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ======================================================================
+         OPEN BOUNDLESS STAGES (NO OUTER BOX FRAMES)
+         ====================================================================== -->
+    <main class="app-wrapper">
+      <!-- ==================================================================
+             STAGE 1: MỜI NHẬP TÊN (KHÔNG TIẾT LỘ 20/10 ĐỂ GÂY BẤT NGỜ)
+             ================================================================== -->
+      <section id="stage-1" class="stage-section active" data-stage="1">
+        <div class="open-hero-center">
+          <div class="floating-wave-icon floating-anim">🌊</div>
+
+          <p class="eyebrow-kicker">LỜI NHẮN TỪ ĐẠI DƯƠNG</p>
+          <h1 class="hero-title-open">Này cậu ơi, dừng chân chút nhé...</h1>
+          <p class="hero-subtitle-open">
+            Hôm nay có một điều bí mật nho nhỏ đang đợi cậu ở phía trước. Trước
+            khi bắt đầu, cho tớ biết tên hoặc biệt danh của cậu nhé?
+          </p>
+
+          <form id="form-enter-name" autocomplete="off">
+            <div class="open-name-input-wrap">
+              <input
+                type="text"
+                id="input-user-name"
+                class="input-open-line"
+                placeholder="Nhập tên của cậu vào đây..."
+                maxlength="30"
+                required
+              />
+              <span id="name-char-counter" class="input-char-counter"
+                >0 / 30</span
+              >
+            </div>
+
+            <div class="quick-tags">
+              <button type="button" id="btn-dice-nickname" class="dice-mix-btn">
+                <i class="fa-solid fa-dice"></i>
+                <span>Tung xúc xắc trộn biệt danh thú vị</span>
+              </button>
+            </div>
+
+            <button type="submit" class="btn-primary-ocean">
+              <span>Tiếp tục nhé</span>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+             STAGE 2: CHÀO [TÊN] & MỞ VỎ SÒ ĐẠI DƯƠNG (ẤN 3 LẦN, KHÔNG THANH ĐẾM)
+             ================================================================== -->
+      <section id="stage-2" class="stage-section" data-stage="2">
+        <div class="open-gift-stage">
+          <p class="eyebrow-kicker">MÓN QUÀ TỪ LÒNG ĐẠI DƯƠNG</p>
+          <h2 class="personal-welcome-title">
+            Chào <span class="highlight-name dynamic-user-name">Cậu</span> nha!
+          </h2>
+
+          <p id="stage2-story-text" class="open-story-text">
+            Cảm ơn cậu đã ghé qua đây hôm nay. Giữa làn nước xanh thẳm có một
+            chiếc vỏ sò ngọc trai đang cất giữ món quà dành riêng cho cậu đấy!
+          </p>
+
+          <!-- 3D Giant Iridescent Clamshell Floating in Open Space -->
+          <div class="treasure-arena">
+            <div
+              id="gift-pedestal-trigger"
+              class="treasure-pedestal floating-anim"
+              role="button"
+              tabindex="0"
+              aria-label="Chạm vào chiếc vỏ sò đại dương để mở quà"
+              title="Chạm vào chiếc vỏ sò để mở!"
+            >
+              <div class="aura-circle"></div>
+              <div class="shell-shockwave-ring" aria-hidden="true"></div>
+              <div class="shell-light-beam" aria-hidden="true"></div>
+
+              <!-- 3D Clamshell Structure -->
+              <div id="ocean-gift-box" class="ocean-clamshell">
+                <!-- Nắp vỏ sò phía trên (Upper Valve) -->
+                <div class="shell-upper-valve">
+                  <svg
+                    class="shell-valve-svg"
+                    viewBox="0 0 260 190"
+                    fill="none"
+                  >
+                    <defs>
+                      <linearGradient
+                        id="upperShellGrad"
+                        x1="20"
+                        y1="10"
+                        x2="240"
+                        y2="185"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop offset="0%" stop-color="#7dd3fc" />
+                        <stop offset="42%" stop-color="#0284c7" />
+                        <stop offset="78%" stop-color="#f472b6" />
+                        <stop offset="100%" stop-color="#0369a1" />
+                      </linearGradient>
+                      <linearGradient
+                        id="shellRibGrad"
+                        x1="130"
+                        y1="15"
+                        x2="130"
+                        y2="180"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop offset="0%" stop-color="rgba(255,255,255,0.65)" />
+                        <stop
+                          offset="100%"
+                          stop-color="rgba(186,230,253,0.12)"
+                        />
+                      </linearGradient>
+                    </defs>
+                    <!-- Scalloped Fan Body -->
+                    <path
+                      d="M130 182 C75 182 18 140 12 84 C8 50 32 28 58 34 C68 16 96 10 114 24 C124 10 136 10 146 24 C164 10 192 16 202 34 C228 28 252 50 248 84 C242 140 185 182 130 182 Z"
+                      fill="url(#upperShellGrad)"
+                      stroke="rgba(255,255,255,0.65)"
+                      stroke-width="2.5"
+                    />
+                    <!-- Fluted Shell Ribs -->
+                    <path
+                      d="M130 178 L130 16"
+                      stroke="url(#shellRibGrad)"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M130 178 L98 22"
+                      stroke="url(#shellRibGrad)"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M130 178 L64 34"
+                      stroke="url(#shellRibGrad)"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M130 178 L34 62"
+                      stroke="url(#shellRibGrad)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M130 178 L162 22"
+                      stroke="url(#shellRibGrad)"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M130 178 L196 34"
+                      stroke="url(#shellRibGrad)"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M130 178 L226 62"
+                      stroke="url(#shellRibGrad)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+
+                <!-- Viên ngọc trai phát sáng ở giữa lòng vỏ sò -->
+                <div class="gift-core-pearl" aria-hidden="true">
+                  <span class="pearl-luster"></span>
+                  <div class="pearl-halo-rings"></div>
+                </div>
+
+                <!-- Đế vỏ sò phía dưới (Lower Valve) -->
+                <div class="shell-lower-valve">
+                  <svg class="shell-base-svg" viewBox="0 0 260 110" fill="none">
+                    <defs>
+                      <linearGradient
+                        id="lowerShellGrad"
+                        x1="30"
+                        y1="0"
+                        x2="230"
+                        y2="105"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop offset="0%" stop-color="#0ea5e9" />
+                        <stop offset="50%" stop-color="#0369a1" />
+                        <stop offset="100%" stop-color="#1e1b4b" />
+                      </linearGradient>
+                      <radialGradient
+                        id="innerNacreGrad"
+                        cx="50%"
+                        cy="30%"
+                        r="60%"
+                      >
+                        <stop offset="0%" stop-color="#fdf2f8" />
+                        <stop offset="45%" stop-color="#bae6fd" />
+                        <stop offset="100%" stop-color="#0284c7" />
+                      </radialGradient>
+                    </defs>
+                    <!-- Inner Nacre Bed (Lòng xà cừ óng ánh) -->
+                    <ellipse
+                      cx="130"
+                      cy="36"
+                      rx="104"
+                      ry="28"
+                      fill="url(#innerNacreGrad)"
+                      stroke="rgba(255,255,255,0.5)"
+                      stroke-width="1.5"
+                    />
+                    <!-- Lower Shell Cup -->
+                    <path
+                      d="M22 36 C28 84 74 102 130 102 C186 102 232 84 238 36 C204 56 168 62 130 62 C92 62 56 56 22 36 Z"
+                      fill="url(#lowerShellGrad)"
+                      stroke="rgba(125,211,252,0.55)"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <p id="gift-hint-status" class="gift-hint-text">
+              Chạm nhẹ vào <strong>Chiếc Vỏ Sò</strong> để đánh thức món quà từ
+              đại dương nhé...
+            </p>
+          </div>
+
+          <div class="stage-secondary-action">
+            <button
+              type="button"
+              id="btn-instant-open-gift"
+              class="btn-secondary-ocean"
+            >
+              <span>Mở vỏ sò ngay lập tức</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+             STAGE 3: THẾ GIỚI ĐẠI DƯƠNG & MÀN HÌNH HOLOGRAM DƯỚI NƯỚC
+             ================================================================== -->
+      <section id="stage-3" class="stage-section" data-stage="3">
+        <div class="underwater-world-stage">
+          <!-- Hệ sinh thái sinh vật biển chi tiết bơi lượn đa hướng quanh màn hình -->
+          <div
+            id="underwater-creatures-stage"
+            class="underwater-creatures-layer"
+            aria-hidden="true"
+          >
+            <svg width="0" height="0" style="position: absolute">
+              <defs>
+                <linearGradient
+                  id="whaleBodyGrad"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stop-color="#bae6fd" />
+                  <stop offset="45%" stop-color="#0284c7" />
+                  <stop offset="100%" stop-color="#1e3a8a" />
+                </linearGradient>
+                <linearGradient
+                  id="whaleBellyGrad"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="0%"
+                >
+                  <stop offset="0%" stop-color="#f0f9ff" stop-opacity="0.85" />
+                  <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.2" />
+                </linearGradient>
+                <linearGradient
+                  id="angelFishGrad"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stop-color="#fde047" />
+                  <stop offset="45%" stop-color="#38bdf8" />
+                  <stop offset="100%" stop-color="#ec4899" />
+                </linearGradient>
+                <linearGradient
+                  id="clownFishGrad"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="50%"
+                >
+                  <stop offset="0%" stop-color="#fb923c" />
+                  <stop offset="50%" stop-color="#f43f5e" />
+                  <stop offset="100%" stop-color="#fbbf24" />
+                </linearGradient>
+                <linearGradient
+                  id="mantaDetailedGrad"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stop-color="#7dd3fc" />
+                  <stop offset="55%" stop-color="#0ea5e9" />
+                  <stop offset="100%" stop-color="#312e81" />
+                </linearGradient>
+                <radialGradient id="jellyBellPink" cx="50%" cy="30%" r="65%">
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+                  <stop offset="40%" stop-color="#f9a8d4" stop-opacity="0.8" />
+                  <stop offset="80%" stop-color="#ec4899" stop-opacity="0.55" />
+                  <stop offset="100%" stop-color="#a855f7" stop-opacity="0.2" />
+                </radialGradient>
+                <radialGradient id="jellyBellCyan" cx="50%" cy="30%" r="65%">
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+                  <stop offset="40%" stop-color="#a5f3fc" stop-opacity="0.8" />
+                  <stop offset="80%" stop-color="#06b6d4" stop-opacity="0.55" />
+                  <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.2" />
+                </radialGradient>
+                <linearGradient
+                  id="anthiasGrad"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stop-color="#fb7185" />
+                  <stop offset="48%" stop-color="#f43f5e" />
+                  <stop offset="100%" stop-color="#a855f7" />
+                </linearGradient>
+                <linearGradient
+                  id="flyingFishGrad"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="50%"
+                >
+                  <stop offset="0%" stop-color="#38bdf8" />
+                  <stop offset="50%" stop-color="#7dd3fc" />
+                  <stop offset="100%" stop-color="#ffffff" />
+                </linearGradient>
+                <linearGradient
+                  id="butterflyGrad"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stop-color="#fde047" />
+                  <stop offset="55%" stop-color="#fbbf24" />
+                  <stop offset="100%" stop-color="#f59e0b" />
+                </linearGradient>
+                <linearGradient
+                  id="seahorseCyanGrad"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stop-color="#2dd4bf" />
+                  <stop offset="50%" stop-color="#0ea5e9" />
+                  <stop offset="100%" stop-color="#a78bfa" />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            <!-- 1. Cá Voi Lưng Gù Phát Quang (Bioluminescent Humpback Whale) -->
+            <div class="sea-creature creature-whale">
+              <svg viewBox="0 0 280 110" fill="none">
+                <g class="whale-body-group">
+                  <!-- Vây ngực sau -->
+                  <path
+                    d="M155 62 C142 86 118 98 104 96 C116 82 130 68 140 58 Z"
+                    fill="#0369a1"
+                    opacity="0.7"
+                  />
+                  <!-- Thân cá voi -->
+                  <path
+                    d="M262 48 C245 24 202 16 152 22 C104 28 62 42 28 46 C16 34 6 22 2 18 C4 34 10 46 18 50 C10 54 4 66 2 80 C6 76 16 64 28 54 C65 58 106 72 156 74 C204 76 244 64 262 54 C268 51 268 49 262 48 Z"
+                    fill="url(#whaleBodyGrad)"
+                  />
+                  <!-- Bụng cá voi có rãnh sọc -->
+                  <path
+                    d="M260 52 C240 66 198 75 152 72 C136 58 188 52 260 52 Z"
+                    fill="url(#whaleBellyGrad)"
+                  />
+                  <path
+                    d="M245 56 Q205 65 168 62"
+                    stroke="#e0f2fe"
+                    stroke-width="1"
+                    opacity="0.55"
+                  />
+                  <path
+                    d="M238 61 Q202 69 174 66"
+                    stroke="#e0f2fe"
+                    stroke-width="1"
+                    opacity="0.45"
+                  />
+                  <!-- Vây lưng -->
+                  <path
+                    d="M96 31 C88 18 76 16 72 22 C78 26 82 30 84 34 Z"
+                    fill="#38bdf8"
+                  />
+                  <!-- Vây ngực trước dài uyển chuyển -->
+                  <path
+                    class="fin-pectoral-anim"
+                    d="M178 56 C164 84 134 104 114 104 C128 86 146 66 160 52 Z"
+                    fill="#7dd3fc"
+                  />
+                  <!-- Đốm sao phát quang trên lưng -->
+                  <circle cx="215" cy="34" r="2" fill="#fff" opacity="0.9" />
+                  <circle
+                    cx="195"
+                    cy="30"
+                    r="1.5"
+                    fill="#7dd3fc"
+                    opacity="0.8"
+                  />
+                  <circle
+                    cx="172"
+                    cy="29"
+                    r="2.2"
+                    fill="#f9a8d4"
+                    opacity="0.85"
+                  />
+                  <circle cx="148" cy="32" r="1.6" fill="#fff" opacity="0.8" />
+                  <circle
+                    cx="125"
+                    cy="36"
+                    r="1.8"
+                    fill="#7dd3fc"
+                    opacity="0.75"
+                  />
+                  <!-- Mắt cá voi -->
+                  <circle cx="232" cy="46" r="2.6" fill="#ffffff" />
+                  <circle cx="232.5" cy="46" r="1.2" fill="#020b18" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- 2. Cá Heo Xanh Nhảy Sóng (Sleek Leaping Dolphin - Standalone) -->
+            <div class="sea-creature creature-dolphin">
+              <svg viewBox="0 0 240 110" fill="none">
+                <g class="fish-wag-group">
+                  <!-- Vây lưng cong -->
+                  <path
+                    d="M126 28 C132 10 148 8 156 12 C148 20 140 30 136 40 Z"
+                    fill="#38bdf8"
+                  />
+                  <!-- Vây ngực rẽ nước -->
+                  <path
+                    d="M92 56 C100 70 116 80 126 76 C116 68 106 60 100 52 Z"
+                    fill="#0ea5e9"
+                  />
+                  <!-- Thân cá heo uốn lượn nhảy sóng -->
+                  <path
+                    d="M10 74 C18 72 28 66 40 54 C64 34 98 22 136 24 C174 26 202 38 222 46 C232 50 238 48 240 46 C238 50 228 56 216 56 C188 58 164 54 136 56 C106 58 78 72 52 86 C36 92 20 96 12 96 C6 98 4 90 8 84 Z"
+                    fill="url(#whaleBodyGrad)"
+                  />
+                  <!-- Đuôi xòe hình trăng khuyết -->
+                  <path
+                    d="M18 88 C8 82 4 72 6 64 C12 74 22 82 30 86 C22 90 12 98 6 108 C4 100 6 90 18 88 Z"
+                    fill="#0284c7"
+                  />
+                  <!-- Vệt bụng sáng lấp lánh -->
+                  <path
+                    d="M44 60 C70 46 104 40 140 42 C172 44 200 52 216 56 C182 58 148 56 118 60 C92 64 68 76 50 82 C40 76 40 68 44 60 Z"
+                    fill="#f0f9ff"
+                    opacity="0.82"
+                  />
+                  <!-- Mắt cá heo -->
+                  <circle cx="210" cy="48" r="2.5" fill="#ffffff" />
+                  <circle cx="210.6" cy="48" r="1.2" fill="#020b18" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- 3. Cá Thiên Thần Hoàng Đế (Moorish Idol / Emperor Angelfish - Standalone) -->
+            <div class="sea-creature creature-angelfish">
+              <svg viewBox="0 0 130 110" fill="none">
+                <g class="fish-wag-group">
+                  <!-- Đuôi lụa -->
+                  <path d="M34 54 L10 38 C14 48 14 60 10 70 Z" fill="#f472b6" />
+                  <!-- Vây lưng kéo dài thướt tha -->
+                  <path
+                    d="M78 26 C56 4 24 2 4 6 C26 12 46 22 54 34 Z"
+                    fill="#fde047"
+                  />
+                  <!-- Vây bụng dài -->
+                  <path
+                    d="M74 80 C56 98 32 104 16 104 C34 94 48 84 54 74 Z"
+                    fill="#38bdf8"
+                  />
+                  <!-- Thân cá hình thoi bầu -->
+                  <path
+                    d="M114 54 C102 32 82 24 62 28 C44 32 34 44 32 54 C34 64 44 76 62 80 C82 84 102 76 114 54 Z"
+                    fill="url(#angelFishGrad)"
+                  />
+                  <!-- Các sọc vằn nhiệt đới -->
+                  <path
+                    d="M88 31 Q78 54 88 77"
+                    stroke="#04152d"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                    opacity="0.65"
+                  />
+                  <path
+                    d="M68 28 Q58 54 68 80"
+                    stroke="#ffffff"
+                    stroke-width="3.5"
+                    stroke-linecap="round"
+                    opacity="0.85"
+                  />
+                  <path
+                    d="M50 34 Q42 54 50 74"
+                    stroke="#04152d"
+                    stroke-width="3.5"
+                    stroke-linecap="round"
+                    opacity="0.6"
+                  />
+                  <circle cx="98" cy="48" r="3.5" fill="#fff" />
+                  <circle cx="99" cy="48" r="1.8" fill="#020b18" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- 4. Cá Hề Nemo Độc Lập (Clownfish - Standalone) -->
+            <div class="sea-creature creature-clownfish">
+              <svg viewBox="0 0 110 70" fill="none">
+                <g class="fish-wag-group">
+                  <path
+                    d="M26 36 L8 24 C12 32 12 40 8 48 Z"
+                    fill="#fb923c"
+                    stroke="#04152d"
+                    stroke-width="1.2"
+                  />
+                  <path d="M58 18 C50 8 38 10 34 20 Z" fill="#fb923c" />
+                  <path d="M78 20 C72 10 62 10 58 18 Z" fill="#fb923c" />
+                  <ellipse
+                    cx="58"
+                    cy="35"
+                    rx="36"
+                    ry="19"
+                    fill="url(#clownFishGrad)"
+                  />
+                  <!-- 3 Sọc trắng viền đen đặc trưng của cá hề -->
+                  <path
+                    d="M74 19 Q68 35 74 51"
+                    stroke="#ffffff"
+                    stroke-width="5"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M54 17 Q48 35 54 53"
+                    stroke="#ffffff"
+                    stroke-width="5.5"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M32 23 Q28 35 32 47"
+                    stroke="#ffffff"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="82" cy="31" r="2.8" fill="#fff" />
+                  <circle cx="83" cy="31" r="1.4" fill="#020b18" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- 5. Cá Blue Tang Dory Độc Lập (Blue Tang - Standalone) -->
+            <div class="sea-creature creature-bluetang">
+              <svg viewBox="0 0 110 70" fill="none">
+                <g class="fish-wag-group">
+                  <!-- Đuôi vàng rực rỡ -->
+                  <path d="M30 35 L8 20 L8 50 Z" fill="#fde047" />
+                  <!-- Thân xanh biển đậm -->
+                  <ellipse cx="62" cy="35" rx="34" ry="20" fill="#0284c7" />
+                  <!-- Hoa văn bảng vẽ màu đen đặc trưng -->
+                  <path
+                    d="M80 24 C62 20 44 24 36 35 C44 46 60 44 72 38"
+                    stroke="#020b18"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                    fill="none"
+                  />
+                  <circle cx="82" cy="30" r="2.8" fill="#fff" />
+                  <circle cx="83" cy="30" r="1.3" fill="#020b18" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- 6. Rùa Biển Ngọc Lục Bảo (Sea Turtle - Standalone) -->
+            <div class="sea-creature creature-turtle">
+              <svg viewBox="0 0 150 110" fill="none">
+                <!-- Chân bơi sau -->
+                <path
+                  d="M38 34 C24 22 14 24 10 30 C20 36 28 38 38 34 Z"
+                  fill="#0284c7"
+                />
+                <path
+                  d="M38 76 C24 88 14 86 10 80 C20 74 28 72 38 76 Z"
+                  fill="#0284c7"
+                />
+                <!-- Đầu rùa -->
+                <ellipse cx="118" cy="55" rx="14" ry="10" fill="#38bdf8" />
+                <circle cx="124" cy="51" r="2.2" fill="#020b18" />
+                <circle cx="124.6" cy="50.5" r="0.8" fill="#fff" />
+                <!-- Cánh bơi trước vẫy nhịp nhàng -->
+                <path
+                  class="turtle-flipper-left"
+                  d="M88 34 C96 12 114 4 124 8 C116 24 104 34 88 38 Z"
+                  fill="#7dd3fc"
+                />
+                <path
+                  class="turtle-flipper-right"
+                  d="M88 76 C96 98 114 106 124 102 C116 86 104 76 88 72 Z"
+                  fill="#7dd3fc"
+                />
+                <!-- Mai rùa họa tiết lục giác -->
+                <ellipse
+                  cx="68"
+                  cy="55"
+                  rx="36"
+                  ry="26"
+                  fill="#0369a1"
+                  stroke="#7dd3fc"
+                  stroke-width="2"
+                />
+                <ellipse
+                  cx="68"
+                  cy="55"
+                  rx="30"
+                  ry="20"
+                  fill="#0d9488"
+                  opacity="0.85"
+                />
+                <polygon
+                  points="68,42 80,48 80,62 68,68 56,62 56,48"
+                  fill="#2dd4bf"
+                  opacity="0.65"
+                  stroke="#99f6e4"
+                  stroke-width="1"
+                />
+                <line
+                  x1="68"
+                  y1="42"
+                  x2="68"
+                  y2="29"
+                  stroke="#99f6e4"
+                  stroke-width="1.2"
+                />
+                <line
+                  x1="68"
+                  y1="68"
+                  x2="68"
+                  y2="81"
+                  stroke="#99f6e4"
+                  stroke-width="1.2"
+                />
+                <line
+                  x1="80"
+                  y1="48"
+                  x2="96"
+                  y2="40"
+                  stroke="#99f6e4"
+                  stroke-width="1.2"
+                />
+                <line
+                  x1="80"
+                  y1="62"
+                  x2="96"
+                  y2="70"
+                  stroke="#99f6e4"
+                  stroke-width="1.2"
+                />
+                <line
+                  x1="56"
+                  y1="48"
+                  x2="40"
+                  y2="40"
+                  stroke="#99f6e4"
+                  stroke-width="1.2"
+                />
+                <line
+                  x1="56"
+                  y1="62"
+                  x2="40"
+                  y2="70"
+                  stroke="#99f6e4"
+                  stroke-width="1.2"
+                />
+              </svg>
+            </div>
+
+            <!-- 7. Cá Đuối Manta Vẫy Cánh (Giant Manta Ray - Standalone) -->
+            <div class="sea-creature creature-manta">
+              <svg viewBox="0 0 160 110" fill="none">
+                <g class="manta-wing-group">
+                  <path
+                    d="M44 55 Q18 58 2 64"
+                    stroke="#7dd3fc"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M138 48 C148 44 156 44 158 48 C152 52 144 52 138 52 L138 58 C144 58 152 58 158 62 C156 66 148 66 138 62 C116 74 96 96 82 106 C74 88 60 68 42 58 L34 55 L42 52 C60 42 74 22 82 4 C96 14 116 36 138 48 Z"
+                    fill="url(#mantaDetailedGrad)"
+                    stroke="rgba(186,230,253,0.5)"
+                    stroke-width="1.2"
+                  />
+                  <path
+                    d="M114 44 C102 48 92 42 84 26"
+                    stroke="#bae6fd"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    opacity="0.65"
+                  />
+                  <path
+                    d="M114 66 C102 62 92 68 84 84"
+                    stroke="#bae6fd"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    opacity="0.65"
+                  />
+                  <circle cx="132" cy="44" r="1.8" fill="#fff" />
+                  <circle cx="132" cy="66" r="1.8" fill="#fff" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- 8. Sứa Pha Lê Hồng (Góc Trên Trái - Standalone) -->
+            <div class="sea-creature creature-jelly-pink">
+              <svg viewBox="0 0 100 150" fill="none">
+                <g class="jelly-bell-pulse">
+                  <path
+                    d="M14 52 C14 16 86 16 86 52 C74 58 62 50 50 56 C38 50 26 58 14 52 Z"
+                    fill="url(#jellyBellPink)"
+                    stroke="rgba(255,255,255,0.6)"
+                    stroke-width="1.2"
+                  />
+                  <path
+                    d="M24 46 C24 24 76 24 76 46"
+                    stroke="#ffffff"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    opacity="0.6"
+                  />
+                </g>
+                <path
+                  class="tentacle-wave-1"
+                  d="M30 55 C22 78 38 102 26 134"
+                  stroke="#f9a8d4"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  opacity="0.8"
+                />
+                <path
+                  class="tentacle-wave-2"
+                  d="M42 56 C50 82 34 108 44 142"
+                  stroke="#ffffff"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  opacity="0.85"
+                />
+                <path
+                  class="tentacle-wave-1"
+                  d="M56 56 C48 84 64 110 54 140"
+                  stroke="#7dd3fc"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  opacity="0.8"
+                />
+                <path
+                  class="tentacle-wave-2"
+                  d="M68 55 C76 78 60 104 72 132"
+                  stroke="#f472b6"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  opacity="0.75"
+                />
+              </svg>
+            </div>
+
+            <!-- 9. Sứa Xanh Ngọc (Góc Trên Phải - Standalone) -->
+            <div class="sea-creature creature-jelly-cyan">
+              <svg viewBox="0 0 100 150" fill="none">
+                <g class="jelly-bell-pulse">
+                  <path
+                    d="M14 52 C14 16 86 16 86 52 C74 58 62 50 50 56 C38 50 26 58 14 52 Z"
+                    fill="url(#jellyBellCyan)"
+                    stroke="rgba(255,255,255,0.6)"
+                    stroke-width="1.2"
+                  />
+                  <path
+                    d="M24 46 C24 24 76 24 76 46"
+                    stroke="#ffffff"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    opacity="0.6"
+                  />
+                </g>
+                <path
+                  class="tentacle-wave-2"
+                  d="M32 55 C24 80 40 104 28 134"
+                  stroke="#67e8f9"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  opacity="0.8"
+                />
+                <path
+                  class="tentacle-wave-1"
+                  d="M48 56 C56 84 40 110 50 144"
+                  stroke="#ffffff"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  opacity="0.85"
+                />
+                <path
+                  class="tentacle-wave-2"
+                  d="M66 55 C74 80 58 104 68 132"
+                  stroke="#2dd4bf"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  opacity="0.75"
+                />
+              </svg>
+            </div>
+
+            <!-- 10. Cá Phượng Hoàng Vây Lụa (Royal Ribbon Anthias - Standalone) -->
+            <div class="sea-creature creature-anthias">
+              <svg viewBox="0 0 170 95" fill="none">
+                <g class="fish-wag-group">
+                  <path
+                    d="M48 48 C28 32 14 18 2 12 C18 28 32 42 42 48 Z"
+                    fill="#fb7185"
+                    opacity="0.85"
+                  />
+                  <path
+                    d="M48 52 C28 68 14 82 2 88 C18 72 32 58 42 52 Z"
+                    fill="#f43f5e"
+                    opacity="0.85"
+                  />
+                  <path
+                    d="M112 28 C92 4 64 2 46 14 C72 18 96 26 104 36 Z"
+                    fill="#fde047"
+                    opacity="0.9"
+                  />
+                  <path
+                    d="M98 65 C82 84 62 92 48 90 C66 78 82 68 90 60 Z"
+                    fill="#a855f7"
+                    opacity="0.8"
+                  />
+                  <path
+                    d="M152 48 C138 32 110 28 82 32 C54 36 46 44 44 48 C46 54 54 62 82 66 C110 70 138 66 152 52 C158 50 158 49 152 48 Z"
+                    fill="url(#anthiasGrad)"
+                  />
+                  <circle cx="120" cy="42" r="1.8" fill="#fff" opacity="0.9" />
+                  <circle
+                    cx="102"
+                    cy="44"
+                    r="1.4"
+                    fill="#fde047"
+                    opacity="0.85"
+                  />
+                  <circle cx="84" cy="47" r="1.6" fill="#fff" opacity="0.8" />
+                  <circle cx="138" cy="45" r="2.8" fill="#fff" />
+                  <circle cx="138.5" cy="45" r="1.3" fill="#020b18" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- 11. Cá Chuồn Cánh Pha Lê (Crystal Flying Fish - Standalone) -->
+            <div class="sea-creature creature-flying-fish">
+              <svg viewBox="0 0 160 85" fill="none">
+                <g class="flying-fish-glide">
+                  <path
+                    class="flying-wing-top"
+                    d="M102 36 C96 8 68 2 42 6 C66 18 84 32 94 40 Z"
+                    fill="url(#flyingFishGrad)"
+                    stroke="rgba(255,255,255,0.7)"
+                    stroke-width="1"
+                    opacity="0.85"
+                  />
+                  <path
+                    class="flying-wing-bottom"
+                    d="M102 46 C96 74 68 80 42 76 C66 64 84 50 94 42 Z"
+                    fill="url(#flyingFishGrad)"
+                    stroke="rgba(255,255,255,0.7)"
+                    stroke-width="1"
+                    opacity="0.75"
+                  />
+                  <path d="M38 42 L6 22 L14 42 L6 62 L38 42 Z" fill="#38bdf8" />
+                  <ellipse
+                    cx="94"
+                    cy="42"
+                    rx="52"
+                    ry="11"
+                    fill="url(#whaleBodyGrad)"
+                  />
+                  <ellipse
+                    cx="94"
+                    cy="45"
+                    rx="46"
+                    ry="6"
+                    fill="#f0f9ff"
+                    opacity="0.8"
+                  />
+                  <circle cx="136" cy="40" r="2.4" fill="#fff" />
+                  <circle cx="136.5" cy="40" r="1.1" fill="#020b18" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- 12. Cá Bướm Hoàng Kim (Golden Butterflyfish - Standalone) -->
+            <div class="sea-creature creature-butterflyfish">
+              <svg viewBox="0 0 120 95" fill="none">
+                <g class="fish-wag-group">
+                  <path
+                    d="M88 28 C74 4 54 2 34 4 C58 12 74 20 80 32 Z"
+                    fill="#ffffff"
+                    stroke="#fde047"
+                    stroke-width="1.2"
+                  />
+                  <path
+                    d="M32 46 L10 32 L16 46 L10 60 L32 46 Z"
+                    fill="#f59e0b"
+                  />
+                  <path
+                    d="M108 46 C96 28 78 22 58 26 C42 30 32 40 30 46 C32 54 42 64 58 68 C78 72 96 66 108 46 Z"
+                    fill="url(#butterflyGrad)"
+                  />
+                  <path
+                    d="M96 28 Q88 46 96 64"
+                    stroke="#04152d"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    opacity="0.7"
+                  />
+                  <path
+                    d="M76 25 Q68 46 76 67"
+                    stroke="#ffffff"
+                    stroke-width="3.5"
+                    stroke-linecap="round"
+                    opacity="0.9"
+                  />
+                  <path
+                    d="M56 30 Q48 46 56 62"
+                    stroke="#04152d"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    opacity="0.6"
+                  />
+                  <circle cx="94" cy="40" r="2.8" fill="#fff" />
+                  <circle cx="94.5" cy="40" r="1.3" fill="#020b18" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- 13. Cá Ngựa Vàng Kim Tuyệt Đẹp (Góc Dưới Trái - Authentic Anatomical Model) -->
+            <div class="sea-creature creature-seahorse-gold">
+              <svg viewBox="0 0 512 512" fill="none">
+                <!-- Giáp lưng gai & vương miện -->
+                <path
+                  fill="#fde047"
+                  opacity="0.88"
+                  d="M310.047,66.477c-3.597-3.616-7.445-6.921-11.282-9.58c-26.082-16.834-61.582-1.723-75.484,12.189
+                  c-22.424,22.424-42.985,57.21-30.655,137.629c4.201,35.883,39.218,63.265,39.349,107.852c0.02,6.417-0.685,13.197-2.307,20.4
+                  c0,0-5.389,18.557-10.537,35.752c-0.01,0-0.01,0.01-0.01,0.01c-0.503-46.411-58.781-71.172-58.781-71.172l19.201-37.677
+                  l-44.718-33.526l24.782-23.865l-36.87-33.475l33.647-25.609l-25.003-34.181l41.515-24.902l-13.149-31.591l53.412-17.71L191.517,0
+                  c0,0,63.173,5.289,71.423,5.984C272.583,27.753,305.303,61.622,310.047,66.477z"
+                />
+                <!-- Thân hình chữ S & Đuôi xoắn ốc Fibonacci thực thụ -->
+                <path
+                  fill="url(#clownFishGrad)"
+                  stroke="#fef08a"
+                  stroke-width="3"
+                  d="M387.207,159.806c-6.185,12.35-24.026,16.209-35.864,9.107
+                  c-11.161-6.696-36.712-21.609-36.712-21.609s-22.422-18.712-39.133-8.301c-8.698,4.48-18.313,20.623-8.192,36.711
+                  c0.675,1.481,10.406,13.59,10.406,13.59c25.054,30.161,32.216,83.986,12.2,117.693c-7.082,11.918-47.398,84.873-51.679,97.133
+                  c-4.967,14.235-8.562,24.509-8.029,33.647c1.532,26.686,16.35,41.988,40.638,41.988c24.127,0,31.058-8.915,37.606-20.571
+                  c5.762-10.245,4.493-23.835-3.083-33.032c-6.538-7.928-12.703-9.067-12.764-9.067h-0.353c-8.754,0-15.947-6.921-16.179-15.695
+                  c-0.232-8.895,6.8-16.299,15.695-16.531c2.155-0.041,21.387,0.071,38.472,20.792c16.108,19.543,18.647,47.408,6.317,69.339
+                  c-10.294,18.294-26.151,37-65.711,37c-19.997,0-37.485-6.71-50.551-19.412c-13.317-12.935-21.024-31.249-22.274-52.958
+                  c-0.896-15.544,4.05-29.719,9.782-46.119c1.642-4.684,4.826-15.061,8.1-26c0,0,0-0.01,0.01-0.01
+                  c5.148-17.197,10.537-35.752,10.537-35.752c1.622-7.203,2.327-13.983,2.307-20.4c-0.131-44.587-35.148-71.969-39.349-107.852
+                  c-12.331-80.42,8.231-115.205,30.655-137.629c13.902-13.912,49.399-29.02,75.484-12.189c11.172,7.737,22.394,20.964,27.521,31.169
+                  c9.923,19.765,12.945,22.343,56.001,48.547C392.355,140.454,389.746,154.729,387.207,159.806z"
+                />
+                <!-- Mắt cá ngựa -->
+                <circle cx="284.594" cy="89.487" r="9" fill="#ffffff" />
+                <circle cx="285.5" cy="89.5" r="4.5" fill="#020b18" />
+              </svg>
+            </div>
+
+            <!-- 14. Cá Ngựa Ngọc Lam Quý Phái (Góc Dưới Phải - Authentic Anatomical Model) -->
+            <div class="sea-creature creature-seahorse-cyan">
+              <svg
+                viewBox="0 0 512 512"
+                fill="none"
+                style="transform: scaleX(-1)"
+              >
+                <path
+                  fill="#67e8f9"
+                  opacity="0.88"
+                  d="M310.047,66.477c-3.597-3.616-7.445-6.921-11.282-9.58c-26.082-16.834-61.582-1.723-75.484,12.189
+                  c-22.424,22.424-42.985,57.21-30.655,137.629c4.201,35.883,39.218,63.265,39.349,107.852c0.02,6.417-0.685,13.197-2.307,20.4
+                  c0,0-5.389,18.557-10.537,35.752c-0.01,0-0.01,0.01-0.01,0.01c-0.503-46.411-58.781-71.172-58.781-71.172l19.201-37.677
+                  l-44.718-33.526l24.782-23.865l-36.87-33.475l33.647-25.609l-25.003-34.181l41.515-24.902l-13.149-31.591l53.412-17.71L191.517,0
+                  c0,0,63.173,5.289,71.423,5.984C272.583,27.753,305.303,61.622,310.047,66.477z"
+                />
+                <path
+                  fill="url(#seahorseCyanGrad)"
+                  stroke="#a5f3fc"
+                  stroke-width="3"
+                  d="M387.207,159.806c-6.185,12.35-24.026,16.209-35.864,9.107
+                  c-11.161-6.696-36.712-21.609-36.712-21.609s-22.422-18.712-39.133-8.301c-8.698,4.48-18.313,20.623-8.192,36.711
+                  c0.675,1.481,10.406,13.59,10.406,13.59c25.054,30.161,32.216,83.986,12.2,117.693c-7.082,11.918-47.398,84.873-51.679,97.133
+                  c-4.967,14.235-8.562,24.509-8.029,33.647c1.532,26.686,16.35,41.988,40.638,41.988c24.127,0,31.058-8.915,37.606-20.571
+                  c5.762-10.245,4.493-23.835-3.083-33.032c-6.538-7.928-12.703-9.067-12.764-9.067h-0.353c-8.754,0-15.947-6.921-16.179-15.695
+                  c-0.232-8.895,6.8-16.299,15.695-16.531c2.155-0.041,21.387,0.071,38.472,20.792c16.108,19.543,18.647,47.408,6.317,69.339
+                  c-10.294,18.294-26.151,37-65.711,37c-19.997,0-37.485-6.71-50.551-19.412c-13.317-12.935-21.024-31.249-22.274-52.958
+                  c-0.896-15.544,4.05-29.719,9.782-46.119c1.642-4.684,4.826-15.061,8.1-26c0,0,0-0.01,0.01-0.01
+                  c5.148-17.197,10.537-35.752,10.537-35.752c1.622-7.203,2.327-13.983,2.307-20.4c-0.131-44.587-35.148-71.969-39.349-107.852
+                  c-12.331-80.42,8.231-115.205,30.655-137.629c13.902-13.912,49.399-29.02,75.484-12.189c11.172,7.737,22.394,20.964,27.521,31.169
+                  c9.923,19.765,12.945,22.343,56.001,48.547C392.355,140.454,389.746,154.729,387.207,159.806z"
+                />
+                <circle cx="284.594" cy="89.487" r="9" fill="#ffffff" />
+                <circle cx="285.5" cy="89.5" r="4.5" fill="#020b18" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Phần đầu trang tinh gọn: Chỉ giữ huy hiệu Happy Women's Day và dòng dẫn ngắn -->
+          <div class="surprise-header">
+            <div class="surprise-pill">
+              <i class="fa-solid fa-water"></i>
+              <span>Happy Vietnamese Women's Day</span>
+            </div>
+            <p class="stage-lead-text">
+              Giữa lòng đại dương lung linh, một tín hiệu ánh sáng vừa được gửi
+              tới riêng cho
+              <strong class="dynamic-user-name text-accent-pink">Cậu</strong>.
+            </p>
+          </div>
+
+          <!-- MÀN HÌNH ĐẠI DƯƠNG CÔNG NGHỆ TƯƠNG LAI (FUTURISTIC SUB-AQUATIC HOLOGRAM HUD) -->
+          <div class="hologram-ocean-terminal">
+            <!-- 4 Góc Khung Quang Học Tương Lai -->
+            <span class="holo-corner tl" aria-hidden="true"></span>
+            <span class="holo-corner tr" aria-hidden="true"></span>
+            <span class="holo-corner bl" aria-hidden="true"></span>
+            <span class="holo-corner br" aria-hidden="true"></span>
+
+            <!-- Tia Quét Quang Học Màn Hình Nước -->
+            <div class="holo-scanline" aria-hidden="true"></div>
+
+            <!-- Thanh Telemetry Công Nghệ Tương Lai Dưới Đáy Biển -->
+            <div class="holo-hud-topbar">
+              <div class="holo-hud-status">
+                <span class="holo-pulse-dot"></span>
+                <span>AQUA-HOLOGRAPHIC DISPLAY // DEEP SEA</span>
+              </div>
+              <div class="holo-hud-coords">
+                <span>DEPTH: -1200M</span>
+                <span class="holo-divider">•</span>
+                <span
+                  >RECEIVER:
+                  <strong class="dynamic-user-name">CẬU</strong></span
+                >
+              </div>
+            </div>
+
+            <!-- Trái Tim Laser Quang Học Tự Động Vẽ Nét Khi Đến Trang Lời Chúc -->
+            <div
+              id="holo-laser-heart-wrap"
+              class="holo-heart-constellation"
+              aria-hidden="true"
+            >
+              <svg
+                class="holo-drawn-heart-svg"
+                viewBox="0 0 180 56"
+                fill="none"
+              >
+                <defs>
+                  <linearGradient
+                    id="holoHeartLaserGrad"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="0%"
+                  >
+                    <stop offset="0%" stop-color="#38bdf8" />
+                    <stop offset="30%" stop-color="#2dd4bf" />
+                    <stop offset="65%" stop-color="#ff6b9d" />
+                    <stop offset="100%" stop-color="#fcd34d" />
+                  </linearGradient>
+                </defs>
+                <!-- Cánh laser vút 2 bên -->
+                <path
+                  class="holo-wing-left"
+                  d="M24 28 C12 20 4 30 10 36 C18 40 30 36 38 28"
+                />
+                <path
+                  class="holo-wing-right"
+                  d="M156 28 C168 20 176 30 170 36 C162 40 150 36 142 28"
+                />
+                <!-- 2 nửa trái tim vẽ đối xứng từ dưới lên trên -->
+                <path
+                  class="holo-heart-side-l"
+                  d="M90 46 C74 37 38 27 38 16 C38 6 54 4 66 14 C74 22 83 29 90 35"
+                />
+                <path
+                  class="holo-heart-side-r"
+                  d="M90 46 C106 37 142 27 142 16 C142 6 126 4 114 14 C106 22 97 29 90 35"
+                />
+                <circle
+                  cx="90"
+                  cy="46"
+                  r="3"
+                  fill="#ffffff"
+                  class="holo-heart-node"
+                />
+                <polygon
+                  points="90,6 94,12 90,18 86,12"
+                  fill="#fde047"
+                  class="holo-heart-crown"
+                />
+              </svg>
+            </div>
+
+            <!-- Nội Dung Lời Chúc Ngẫu Nhiên Trên Màn Hình Dưới Nước (Chúc 20/10 1 lần ở đầu, bên dưới là lời chúc đa dạng) -->
+            <div class="holo-screen-body">
+              <h3 id="symphony-wish-title" class="holo-greeting-title">
+                Chúc mừng 20/10 nhé, Cậu!
+              </h3>
+              <div id="symphony-wish-body" class="holo-wish-content"></div>
+            </div>
+
+            <!-- Thanh Sóng Âm Quang Học Cuối Màn Hình -->
+            <div class="holo-hud-footer" aria-hidden="true">
+              <div class="holo-waveform">
+                <span></span><span></span><span></span><span></span
+                ><span></span> <span></span><span></span><span></span
+                ><span></span><span></span> <span></span><span></span>
+              </div>
+              <span class="holo-transmission-tag"
+                >OCEAN WISH TRANSMISSION COMPLETE</span
+              >
+            </div>
+          </div>
+
+          <!-- Nút chuyển sang Màn 4 (Không có chữ "Tiếp tục" và không có dấu suy ra) -->
+          <div class="stage-cta-center">
+            <button type="button" id="btn-go-stage-4" class="btn-primary-ocean">
+              <span>Để lại nhận xét & Xem tường chung</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+             STAGE 4: GỬI NHẬN XÉT / CÂU NÓI (GIỚI HẠN 120 KÝ TỰ)
+             ================================================================== -->
+      <section id="stage-4" class="stage-section" data-stage="4">
+        <div class="open-write-stage">
+          <div class="stage-header-center">
+            <div class="posting-as-badge">
+              <i class="fa-regular fa-user"></i>
+              <span>
+                Đang viết dưới tên:
+                <strong class="dynamic-user-name text-accent-pink">Cậu</strong>
+              </span>
+            </div>
+            <h2 class="hero-title-open stage-title-md">
+              Gửi Nhận Xét Hoặc Một Câu Nói Thật Hay
+            </h2>
+            <p class="stage-lead-text">
+              Ghi lại đôi dòng cảm nghĩ hoặc một câu nói thú vị để đẩy lên
+              <strong>Bức Tường Chung</strong> nhé!
+            </p>
+          </div>
+
+          <form id="form-submit-wish">
+            <div class="write-options-grid">
+              <div class="open-field-group">
+                <span class="open-field-label">
+                  Chọn biểu tượng đi kèm tên của cậu
+                </span>
+                <div class="selector-row">
+                  <button
+                    type="button"
+                    class="avatar-option selected"
+                    data-avatar="🌸"
+                    aria-label="Biểu tượng Hoa anh đào"
+                  >
+                    🌸
+                  </button>
+                  <button
+                    type="button"
+                    class="avatar-option"
+                    data-avatar="🐬"
+                    aria-label="Biểu tượng Cá heo"
+                  >
+                    🐬
+                  </button>
+                  <button
+                    type="button"
+                    class="avatar-option"
+                    data-avatar="🐚"
+                    aria-label="Biểu tượng Vỏ sò"
+                  >
+                    🐚
+                  </button>
+                  <button
+                    type="button"
+                    class="avatar-option"
+                    data-avatar="👑"
+                    aria-label="Biểu tượng Vương miện"
+                  >
+                    👑
+                  </button>
+                  <button
+                    type="button"
+                    class="avatar-option"
+                    data-avatar="🦋"
+                    aria-label="Biểu tượng Hồ điệp"
+                  >
+                    🦋
+                  </button>
+                  <button
+                    type="button"
+                    class="avatar-option"
+                    data-avatar="🌟"
+                    aria-label="Biểu tượng Ngôi sao"
+                  >
+                    🌟
+                  </button>
+                  <button
+                    type="button"
+                    class="avatar-option"
+                    data-avatar="💖"
+                    aria-label="Biểu tượng Trái tim"
+                  >
+                    💖
+                  </button>
+                </div>
+              </div>
+
+              <div class="open-field-group">
+                <span class="open-field-label">
+                  Chọn sắc màu cho thẻ của cậu
+                </span>
+                <div class="selector-row">
+                  <button
+                    type="button"
+                    class="color-pill-option pill-ocean selected"
+                    data-theme="theme-ocean"
+                  >
+                    <span class="color-swatch swatch-ocean"></span>
+                    <span>Xanh Biển</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="color-pill-option pill-pink"
+                    data-theme="theme-pink"
+                  >
+                    <span class="color-swatch swatch-pink"></span>
+                    <span>Hồng San Hô</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="color-pill-option pill-gold"
+                    data-theme="theme-gold"
+                  >
+                    <span class="color-swatch swatch-gold"></span>
+                    <span>Vàng Ánh Sao</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="color-pill-option pill-aurora"
+                    data-theme="theme-aurora"
+                  >
+                    <span class="color-swatch swatch-aurora"></span>
+                    <span>Tím Mộng Mơ</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="color-pill-option pill-mint"
+                    data-theme="theme-mint"
+                  >
+                    <span class="color-swatch swatch-mint"></span>
+                    <span>Xanh Ngọc</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="open-field-group">
+              <div class="field-header-row">
+                <label class="open-field-label" for="textarea-public-wish">
+                  Nội dung nhận xét / câu nói của
+                  <span class="dynamic-user-name">cậu</span>
+                </label>
+                <span
+                  id="char-counter-badge"
+                  class="stat-badge tabular-counter"
+                >
+                  0 / 120
+                </span>
+              </div>
+              <textarea
+                id="textarea-public-wish"
+                class="textarea-open-ocean"
+                placeholder="Nhập nhận xét hoặc câu chúc của cậu tại đây..."
+                maxlength="120"
+              ></textarea>
+
+              <div class="sample-quotes-row">
+                <span class="sample-quotes-label">Gợi ý nhanh:</span>
+                <button
+                  type="button"
+                  class="chip-suggestion quote-sample-chip"
+                  data-quote="Chúc hội chị em luôn xinh đẹp tuyệt trần, tiền đầy túi, tình đầy tim! 🌸💎"
+                >
+                  Chúc giàu & xinh
+                </button>
+                <button
+                  type="button"
+                  class="chip-suggestion quote-sample-chip"
+                  data-quote="Giao diện đại dương dễ thương quá! Chúc các bạn nữ luôn rạng rỡ và hạnh phúc nhé! 🌊❤️"
+                >
+                  Khen web & gửi lời chúc
+                </button>
+                <button
+                  type="button"
+                  class="chip-suggestion quote-sample-chip"
+                  data-quote="Phụ nữ là để yêu thương! Ai thả tim câu này chúc cả năm may mắn ngập tràn! ✨👑"
+                >
+                  Câu nói đua Top React
+                </button>
+              </div>
+            </div>
+
+            <div class="form-actions-bar">
+              <button
+                type="button"
+                id="btn-skip-to-wall"
+                class="btn-secondary-ocean"
+              >
+                <span>Không gửi, qua xem tường chung luôn</span>
+              </button>
+
+              <button type="submit" class="btn-primary-ocean">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Đẩy Lên Tường Chung</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+             STAGE 5: TRANG KẾT — BỨC TƯỜNG CHUNG, LỌC NGƯỜI DÙNG & BXH
+             ================================================================== -->
+      <section id="stage-5" class="stage-section" data-stage="5">
+        <div class="open-wall-header">
+          <div class="wall-header-copy">
+            <p class="eyebrow-kicker">KHÔNG GIAN CHIA SẺ CẢM XÚC</p>
+            <h2 class="hero-title-open stage-title-md">
+              Bức Tường Nhận Xét & Cảm Xúc
+            </h2>
+            <p class="stage-lead-text">
+              Thả cảm xúc (❤️ 🌊 🌸 ✨ 😂) hoặc chọn tên người dùng bên dưới để
+              lọc xem nhận xét của từng người nhé!
+            </p>
+            <div class="wall-stats-pills">
+              <span class="stat-badge">
+                <i class="fa-regular fa-comment-dots"></i>
+                <span
+                  >Tổng nhận xét: <strong id="stat-total-posts">0</strong></span
+                >
+              </span>
+              <span class="stat-badge">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <span
+                  >Tổng lượt thả React:
+                  <strong id="stat-total-reacts">0</strong></span
+                >
+              </span>
+            </div>
+          </div>
+
+          <div class="wall-header-actions">
+            <button
+              type="button"
+              id="btn-open-leaderboard"
+              class="btn-leaderboard-gold"
+            >
+              <i class="fa-solid fa-trophy"></i>
+              <span>Bảng Xếp Hạng Nhiều React Nhất</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Danh sách người dùng để bấm xem nhanh comment của người đó -->
+        <div class="author-directory-bar">
+          <div class="author-directory-label">
+            <i class="fa-solid fa-user-tag"></i>
+            <span>Lọc nhanh theo người gửi:</span>
+          </div>
+          <div id="user-filter-chips-bar" class="filter-group"></div>
+        </div>
+
+        <!-- Filter & Search Bar -->
+        <div class="wall-toolbar">
+          <div class="filter-group">
+            <button
+              type="button"
+              class="filter-chip active"
+              data-filter="newest"
+            >
+              <i class="fa-regular fa-clock"></i>
+              <span>Mới nhất</span>
+            </button>
+            <button type="button" class="filter-chip" data-filter="popular">
+              <i class="fa-solid fa-fire-flame-curved"></i>
+              <span>Nhiều React nhất</span>
+            </button>
+            <button type="button" class="filter-chip" data-filter="mine">
+              <i class="fa-regular fa-user"></i>
+              <span>Vừa đăng của tớ</span>
+            </button>
+          </div>
+
+          <div class="search-input-wrap">
+            <i
+              class="fa-solid fa-magnifying-glass search-input-icon"
+              aria-hidden="true"
+            ></i>
+            <input
+              type="text"
+              id="input-search-wall"
+              class="search-wall-input"
+              placeholder="Tìm theo tên hoặc nội dung nhận xét..."
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <!-- Wishes Cards Grid -->
+        <div id="wishes-wall-grid" class="wishes-grid"></div>
+      </section>
+    </main>
+
+    <!-- ======================================================================
+         MODAL: BẢNG XẾP HẠNG CÂU NÓI NHIỀU REACT NHẤT (LEADERBOARD)
+         ====================================================================== -->
+    <div
+      id="modal-leaderboard"
+      class="modal-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="lb-modal-title"
+    >
+      <div class="modal-window">
+        <button
+          type="button"
+          id="btn-close-leaderboard"
+          class="modal-close-btn"
+          aria-label="Đóng"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="modal-header-center">
+          <p class="eyebrow-kicker">VINH DANH CÂU NÓI ẤN TƯỢNG</p>
+          <h2 id="lb-modal-title" class="hero-title-open stage-title-sm">
+            Bảng Xếp Hạng Nhiều React Nhất
+          </h2>
+          <p class="stage-lead-text">
+            Xếp hạng theo tổng số lượt thả cảm xúc của mọi người (❤️ 🌊 🌸 ✨
+            😂)
+          </p>
+        </div>
+
+        <!-- Top 3 Podium -->
+        <div id="leaderboard-podium-container" class="podium-grid"></div>
+
+        <h3 class="leaderboard-subhead">
+          <i class="fa-solid fa-list-ol"></i>
+          <span>Thứ Hạng Chi Tiết</span>
+        </h3>
+        <div id="leaderboard-full-list" class="leaderboard-list"></div>
+      </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <!-- Application Scripts -->
+    <script src="./js/audio.js"></script>
+    <script src="./js/canvas-fx.js"></script>
+    <script src="./js/storage.js"></script>
+    <script src="./js/games.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
